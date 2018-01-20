@@ -27,6 +27,8 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+
+	'mongo': process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow',
 });
 
 // Load your project's Models
