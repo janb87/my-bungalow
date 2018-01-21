@@ -21,6 +21,10 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
+const next = require('next');
+const { parse } = require('url');
+const dev = process.env.NODE_ENV !== 'production';
+const nextApp = next({ dev });
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -28,15 +32,33 @@ keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
 var routes = {
-	views: importRoutes('./views'),
+	api: importRoutes('./api'),
 };
+
+let nextStarted = false;
+nextApp.prepare()
+	.then(() => {
+		nextStarted = true;
+	})
+	.catch((err) => {
+		console.error(err);
+		process.exit(1);
+	});
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+	// Api
+	app.post('/api/contant', routes.api.contact);
+
 	// Views
-	app.get('/', routes.views.index);
-	app.get('/gallery', routes.views.gallery);
-	app.all('/contact', routes.views.contact);
+	app.get('*', (req, res) => {
+		if (nextStarted) {
+			const parsedUrl = parse(req.url, true);
+			const { query } = parsedUrl;
+			return nextApp.render(req, res, '/', query);
+		}
+		res.send('Application is starting...');
+	});
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

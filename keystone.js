@@ -4,7 +4,6 @@ require('dotenv').config();
 
 // Require keystone
 var keystone = require('keystone');
-var Twig = require('twig');
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -13,15 +12,6 @@ var Twig = require('twig');
 keystone.init({
 	'name': 'my-bungalow',
 	'brand': 'my-bungalow',
-
-	'sass': 'public',
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
-	'view engine': 'twig',
-
-	'twig options': { method: 'fs' },
-	'custom engine': Twig.render,
 
 	'auto update': true,
 	'session': true,
@@ -56,7 +46,5 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
-
-
 
 keystone.start();
