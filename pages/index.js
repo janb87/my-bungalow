@@ -102,6 +102,10 @@ export default () => (
 
 				border-right: 1px solid ${colors.WHITE};
 			}
+
+			.bottom-nav > ul > li:last-child {
+				border-right: none;
+			}
 		`}</style>
 		{React.createElement(globalStyles)}
 	</div>
