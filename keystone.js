@@ -13,6 +13,9 @@ keystone.init({
 	'name': 'my-bungalow',
 	'brand': 'my-bungalow',
 
+	'static': 'public',
+	// 'favicon': 'public/favicon.ico',
+
 	'auto update': true,
 	'session': true,
 	'auth': true,

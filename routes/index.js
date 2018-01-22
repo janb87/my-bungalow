@@ -50,7 +50,7 @@ exports = module.exports = function (app) {
 	// Api
 	app.post('/api/contant', routes.api.contact);
 
-	// Views
+	// Pages
 	app.get('*', (req, res) => {
 		if (nextStarted) {
 			const parsedUrl = parse(req.url, true);
