@@ -24,7 +24,7 @@ var importRoutes = keystone.importer(__dirname);
 const next = require('next');
 const { parse } = require('url');
 const dev = process.env.NODE_ENV !== 'production';
-const nextApp = next({ dev });
+const nextApp = next({ dir: 'client', dev });
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
@@ -48,6 +48,7 @@ nextApp.prepare()
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Api
+	app.get('/api/home-page', routes.api.homePage);
 	app.post('/api/contant', routes.api.contact);
 
 	// Pages

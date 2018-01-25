@@ -1,9 +1,11 @@
 import React from 'react';
+import 'isomorphic-unfetch';
+import Link from 'next/link';
 import globalStyles from '../styles/global';
 import colors from '../styles/colors';
-import Link from 'next/link';
+import {getJson} from '../utils/ajax';
 
-export default () => (
+const HomePage = ({ message, backgroundImage }) => (
 	<div>
 		<header>
 			<nav className="top-nav">
@@ -14,7 +16,7 @@ export default () => (
 		</header>
 		<main>
 			<div className="message">
-				<p>Even tot rust komen in de prachtige omgeving van Durbuy.</p>
+				<p>{message}</p>
 			</div>
 			<nav className="bottom-nav">
 				<ul>
@@ -61,7 +63,7 @@ export default () => (
 
 			main {
 				height: 100vh;
-				background-image: url(./img/home-banner.jpg);
+				background-image: url(${backgroundImage.url});
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: center center;
@@ -110,3 +112,10 @@ export default () => (
 		{React.createElement(globalStyles)}
 	</div>
 );
+
+HomePage.getInitialProps = async ({ req }) => {
+	const { message, backgroundImage } = await getJson(req, '/api/home-page');
+	return { message, backgroundImage };
+};
+
+export default HomePage;
