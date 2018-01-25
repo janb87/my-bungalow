@@ -22,6 +22,6 @@
     "dev": "nodemon --watch models --watch routes --watch updates --watch keystone.js keystone.js",
     "build": "next build",
     "lint": "eslint .",
-    "start": "pushd client && next build && popd && NODE_ENV=production node keystone.js"
+    "start": "cd client && next build && cd ../ && NODE_ENV=production node keystone.js"
   }
 }
