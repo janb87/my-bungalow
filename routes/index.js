@@ -56,8 +56,19 @@ exports = module.exports = function (app) {
 	app.get('*', (req, res) => {
 		if (nextStarted) {
 			const parsedUrl = parse(req.url, true);
-			const { query } = parsedUrl;
-			return nextApp.render(req, res, '/', query);
+			const { pathname, query } = parsedUrl;
+			let lang = 'nl';
+			let path = pathname;
+			const parsedPath = pathname.match(/\/(.*?)(\/.*|$)/i);
+			if (
+				parsedPath
+				&& parsedPath.length > 1
+				&& pathname.indexOf('/_next') !== 0
+			) {
+				lang = parsedPath[1] || 'nl';
+				path = parsedPath[2] || '/';
+			}
+			return nextApp.render(req, res, path, { ...query, lang });
 		}
 		res.send('Application is starting...');
 	});

@@ -3,7 +3,7 @@ import 'isomorphic-unfetch';
 import Link from 'next/link';
 import globalStyles from '../styles/global';
 import colors from '../styles/colors';
-import {getJson} from '../utils/ajax';
+import { getJson } from '../utils/ajax';
 
 const HomePage = ({ message, backgroundImage }) => (
 	<div>
@@ -114,8 +114,9 @@ const HomePage = ({ message, backgroundImage }) => (
 	</div>
 );
 
-HomePage.getInitialProps = async ({ req }) => {
-	const { message, backgroundImage } = await getJson(req, '/api/nl/home-page');
+HomePage.getInitialProps = async ({ req, query }) => {
+	// TODO: error handling (eg wrong language)
+	const { message, backgroundImage } = await getJson(req, `/api/${encodeURIComponent(query.lang)}/home-page`);
 	return { message, backgroundImage };
 };
 
