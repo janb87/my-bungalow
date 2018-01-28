@@ -5,11 +5,11 @@ import globalStyles from '../styles/global';
 import colors from '../styles/colors';
 import { getJson } from '../utils/ajax';
 
-const HomePage = ({ message, backgroundImage }) => (
+const HomePage = ({ message, backgroundImage, query: { lang } }) => (
 	<div>
 		<header>
 			<nav className="top-nav">
-				<Link href="/contact">
+				<Link href={`/${lang}/contact`}>
 					<a>Contacteer ons</a>
 				</Link>
 			</nav>
@@ -21,22 +21,22 @@ const HomePage = ({ message, backgroundImage }) => (
 			<nav className="bottom-nav">
 				<ul>
 					<li>
-						<Link href="/de-bungalow">
+						<Link href={`/${lang}/de-bungalow`}>
 							<a>De bungalow</a>
 						</Link>
 					</li>
 					<li>
-						<Link href="/het-park">
+						<Link href={`/${lang}/het-park`}>
 							<a>Het park</a>
 						</Link>
 					</li>
 					<li>
-						<Link href="/in-de-omgeving">
+						<Link href={`/${lang}/in-de-omgeving`}>
 							<a>In de omgeving</a>
 						</Link>
 					</li>
 					<li>
-						<Link href="/reserveer">
+						<Link href={`/${lang}/reserveer`}>
 							<a>Reserveer nu!</a>
 						</Link>
 					</li>
@@ -116,8 +116,11 @@ const HomePage = ({ message, backgroundImage }) => (
 
 HomePage.getInitialProps = async ({ req, query }) => {
 	// TODO: error handling (eg wrong language)
-	const { message, backgroundImage } = await getJson(req, `/api/${encodeURIComponent(query.lang)}/home-page`);
-	return { message, backgroundImage };
+	const { message, backgroundImage } = await getJson(
+		req,
+		`/api/${encodeURIComponent(query.lang)}/home-page`
+	);
+	return { message, backgroundImage, query };
 };
 
 export default HomePage;
