@@ -1,15 +1,20 @@
-const keystone = require('keystone');
-const HomePage = keystone.list('HomePage');
+const { getLang } = require('../../services/lang');
+const { getHomePage } = require('../../services/homePage');
 
-exports = module.exports = function (req, res) {
-	HomePage.model
-		.find()
-		.limit(1)
-		.exec((err, homePage) => {
-			if (err) {
-				// TODO: handle errors
-				return res.json({});
-			}
-			return res.json(homePage[0]);
+exports = module.exports = async function (req, res, next) {
+	try {
+		const { lang } = req.params;
+		if (!lang) {
+			throw new Error('Language parameter is not set');
+		}
+		const langModel = await getLang(lang);
+		const homePage = await getHomePage(langModel.id);
+		const { message, backgroundImage } = homePage;
+		res.json({
+			message,
+			backgroundImage: backgroundImage.secure_url || '/img/home-banner.jpg',
 		});
+	} catch (err) {
+		next(err);
+	}
 };

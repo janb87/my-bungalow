@@ -63,7 +63,7 @@ const HomePage = ({ message, backgroundImage }) => (
 
 			main {
 				height: 100vh;
-				background-image: url(${backgroundImage.url});
+				background-image: url(${backgroundImage});
 				background-repeat: no-repeat;
 				background-size: cover;
 				background-position: center center;
@@ -76,7 +76,7 @@ const HomePage = ({ message, backgroundImage }) => (
 				height: calc(100% - 100px);
 				margin: 0 0 0 50px;
 
-				font-size: 1.6em;
+				font-size: 2em;
 				color: ${colors.WHITE};
 			}
 
@@ -99,6 +99,7 @@ const HomePage = ({ message, backgroundImage }) => (
 				flex: 1;
 				display: flex;
 
+				font-size: 1.4em;
 				align-items: center;
 				justify-content: center;
 
@@ -114,7 +115,7 @@ const HomePage = ({ message, backgroundImage }) => (
 );
 
 HomePage.getInitialProps = async ({ req }) => {
-	const { message, backgroundImage } = await getJson(req, '/api/home-page');
+	const { message, backgroundImage } = await getJson(req, '/api/nl/home-page');
 	return { message, backgroundImage };
 };
 
