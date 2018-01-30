@@ -15,7 +15,7 @@ HomePage.add({
 	name: { type: String, noedit: true, required: true },
 	message: { type: String, required: true },
 	backgroundImage: { type: Types.CloudinaryImage },
-	language: { type: Types.Relationship, ref: 'Lang', required: true },
+	language: { type: Types.Relationship, noedit: true, ref: 'Lang', required: true },
 });
 
 HomePage.defaultSort = '-createdAt';
