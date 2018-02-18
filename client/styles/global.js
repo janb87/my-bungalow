@@ -7,7 +7,7 @@ export default () => [
 		rel="stylesheet"
 	/>,
 	<span key="global-styles">
-		<style global jsx>{`
+		<style global jsx="">{`
 			body {
 				padding: 0;
 				margin: 0;

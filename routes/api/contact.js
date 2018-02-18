@@ -1,27 +1,12 @@
-const keystone = require('keystone');
-const Enquiry = keystone.list('Enquiry');
+const contactService = require('../../services/contact');
 
-exports = module.exports = function (req, res) {
-	const newEnquiry = new Enquiry.model();
-	const updater = newEnquiry.getUpdateHandler(req);
-
-	updater.process(
-		req.body,
-		{
-			flashErrors: true,
-			fields: 'name, email, phone, enquiryType, message',
-			errorMessage: 'There was a problem submitting your enquiry:',
-		},
-		(err) => {
-			if (err) {
-				return res.json({
-					err,
-				});
-			} else {
-				return res.json({
-					success: true,
-				});
-			}
-		}
-	);
+const submitForm = async (req, res, next) => {
+	try {
+		const newContact = await contactService.submitForm(req.body);
+		return res.json(newContact);
+	} catch (err) {
+		next(err);
+	}
 };
+
+module.exports = { submitForm };

@@ -8,6 +8,7 @@
     "isomorphic-unfetch": "^2.0.0",
     "keystone": "4.0.0-beta.7",
     "lodash": "4.17.4",
+    "material-ui": "^0.20.0",
     "next": "4.2.3",
     "next-routes": "^1.3.0",
     "react": "16.2.0",

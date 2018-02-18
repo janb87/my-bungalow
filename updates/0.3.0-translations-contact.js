@@ -1,0 +1,20 @@
+exports.create = {
+	Translations: [
+		{
+			name: 'contact_title',
+			translation_nl: 'Neem contact op',
+		},
+		{
+			name: 'contact_name',
+			translation_nl: 'Uw naam',
+		},
+		{
+			name: 'contact_email',
+			translation_nl: 'Uw e-mailadres',
+		},
+		{
+			name: 'contact_submit',
+			translation_nl: 'Verzenden',
+		},
+	],
+};

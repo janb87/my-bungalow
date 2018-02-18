@@ -9,5 +9,8 @@ exports.create = {
 		{
 			name: 'en',
 		},
+		{
+			name: 'test',
+		},
 	],
 };

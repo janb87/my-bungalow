@@ -35,7 +35,8 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	homePage: 'HomePage',
 	galleries: 'galleries',
-	enquiries: 'enquiries',
+	contact: 'Contact',
+	translations: 'translations',
 	users: 'users',
 });
 

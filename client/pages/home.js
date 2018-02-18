@@ -4,8 +4,13 @@ import colors from '../styles/colors';
 import App from './components/container/app';
 import { getJson } from '../utils/ajax';
 
-const HomePage = ({ message, backgroundImage, query: { lang } }) => [
-	<App key="app" lang={lang} backgroundImage={backgroundImage}>
+const HomePage = ({ message, backgroundImage, config }) => [
+	<App
+		key="app"
+		config={config}
+		backgroundImage={backgroundImage}
+		bottomNav={true}
+	>
 		<div className="message">
 			<p>{message}</p>
 		</div>
@@ -32,13 +37,20 @@ const HomePage = ({ message, backgroundImage, query: { lang } }) => [
 	`}</style>,
 ];
 
-HomePage.getInitialProps = async ({ req, query }) => {
-	// TODO: error handling (eg wrong language)
+HomePage.getInitialProps = async ({ req, query: { lang } }) => {
 	const { message, backgroundImage } = await getJson(
 		req,
-		`/api/${encodeURIComponent(query.lang || 'nl')}/home-page`
+		`/api/${encodeURIComponent(lang || 'nl')}/home-page`
 	);
-	return { message, backgroundImage, query };
+	const { translations, settings } = await getJson(
+		req,
+		`/api/${encodeURIComponent(lang || 'nl')}/config`
+	);
+	return {
+		message,
+		backgroundImage,
+		config: { translations, settings, lang },
+	};
 };
 
 export default HomePage;

@@ -16,6 +16,11 @@ const homePages = {
 		message: 'Welcome',
 		language: 'en',
 	},
+	test: {
+		name: 'Start pagina (test)',
+		message: 'Welkom',
+		language: 'test',
+	},
 };
 
 function createNewHomePages () {

@@ -1,116 +1,59 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Link } from '../../../routes';
 import globalStyles from '../../../styles/global';
-import colors from '../../../styles/colors';
+import localize from '../../../utils/localize';
+import Nav from '../presentation/nav';
+import navLinkStyles from '../../../styles/nav-link';
 
-const App = ({ lang, backgroundImage, children }) => (
-	<div>
-		<header>
-			<nav className="top-nav">
-				<Link route={`/${lang}/contact`}>
-					<a>Contacteer ons</a>
-				</Link>
-			</nav>
-		</header>
-		<main>
-			{children}
-			<nav className="bottom-nav">
-				<ul>
-					<li>
-						<Link route={`/${lang}/de-bungalow`}>
-							<a>De bungalow</a>
-						</Link>
-					</li>
-					<li>
-						<Link route={`/${lang}/het-park`}>
-							<a>Het park</a>
-						</Link>
-					</li>
-					<li>
-						<Link route={`/${lang}/in-de-omgeving`}>
-							<a>In de omgeving</a>
-						</Link>
-					</li>
-					<li>
-						<Link route={`/${lang}/reserveer`}>
-							<a>Reserveer nu!</a>
-						</Link>
-					</li>
-				</ul>
-			</nav>
-		</main>
-		<style jsx>{`
-			a {
-				color: ${colors.WHITE};
-				text-decoration: none;
-			}
+const App = ({
+	config: { lang = 'nl', translations, settings },
+	backgroundImage,
+	children,
+	bottomNav = false,
+}) => {
+	const background
+		= backgroundImage || settings.headerBackgroundImage || '/img/home-banner.jpg';
 
-			a:hover {
-				text-decoration: none;
-				opacity: 0.6;
-			}
+	return (
+		<MuiThemeProvider>
+			<div className="app">
+				<header>
+					{!bottomNav ? (
+						<Nav lang={lang} translations={translations} />
+					) : (
+						<nav className="top-nav">
+							<Link route="contact" params={{ lang }}>
+								<a>{localize('contact_title', translations)}</a>
+							</Link>
+						</nav>
+					)}
+				</header>
+				<main>
+					{children}
+					{bottomNav ? <Nav lang={lang} translations={translations} /> : null}
+				</main>
+				<style jsx="">{`
+					header > nav.top-nav > a {
+						float: right;
+						margin: 20px 50px 20px;
 
-			header > nav.top-nav > a {
-				float: right;
-				margin: 20px 50px 20px;
+						font-size: 1.2em;
+					}
 
-				font-size: 1.2em;
-			}
-
-			main {
-				height: 100vh;
-				background-image: url(${backgroundImage});
-				background-repeat: no-repeat;
-				background-size: cover;
-				background-position: center center;
-			}
-
-			.bottom-nav {
-				height: 101px;
-				margin-bottom: 100px;
-			}
-
-			.bottom-nav > ul {
-				display: flex;
-				height: 100%;
-				margin: 0;
-				padding: 0;
-				flex-direction: column;
-
-				list-style-type: none;
-
-				background: rgba(0, 0, 0, 0.5);
-			}
-
-			.bottom-nav > ul > li {
-				flex: 1;
-				display: flex;
-
-				font-size: 1em;
-				align-items: center;
-				justify-content: center;
-
-				border-right: 1px solid ${colors.WHITE};
-			}
-
-			.bottom-nav > ul > li:last-child {
-				border-right: none;
-			}
-
-			@media (min-width: 768px) {
-				.bottom-nav {
-					margin-bottom: 0;
-				}
-				.bottom-nav > ul {
-					flex-direction: row;
-				}
-				.bottom-nav > ul > li {
-					font-size: 1.4em;
-				}
-			}
-		`}</style>
-		{React.createElement(globalStyles)}
-	</div>
-);
+					main {
+						height: 100vh;
+						background-image: url(${background});
+						background-repeat: no-repeat;
+						background-size: cover;
+						background-position: center center;
+					}
+				`}</style>
+				{React.createElement(navLinkStyles)}
+				{React.createElement(globalStyles)}
+			</div>
+		</MuiThemeProvider>
+	);
+};
 
 export default App;

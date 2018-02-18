@@ -2,8 +2,9 @@ const routes = require('next-routes')();
 
 routes
 	.add('default', '/', 'home')
-	.add('default-lang', '/:lang(en|nl|fr|test)', 'home')
-	.add('home', '/:lang(en|nl|fr|test)/home', 'home')
-	.add('contact', '/:lang(en|nl|fr|test)/contact', 'contact');
+	.add('default-lang', '/:lang', 'home')
+	.add('home', '/:lang/home', 'home')
+	.add('contact', '/:lang/contact', 'contact')
+	.add('bungalow-nl', '/:lang/bungalow', 'bungalow');
 
 module.exports = routes;

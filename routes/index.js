@@ -31,7 +31,8 @@ nextApp
 exports = module.exports = function (app) {
 	// Api
 	app.get('/api/:lang/home-page', routes.api.homePage);
-	app.post('/api/:lang/contant', routes.api.contact);
+	app.get('/api/:lang/config', routes.api.config);
+	app.post('/api/contant', routes.api.contact.submitForm);
 
 	// Pages
 	app.get('*', (req, res) => {
