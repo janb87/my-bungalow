@@ -18,6 +18,23 @@ function getLang (lang) {
 	});
 }
 
+function getLangById (languageId) {
+	return new Promise((resolve, reject) => {
+		Languages.model.findById(languageId).exec((err, language) => {
+			if (err) {
+				reject(err);
+				return;
+			}
+			if (!language) {
+				reject(new Error(LANGUAGE_NOT_FOUND));
+				return;
+			}
+			resolve(language);
+		});
+	});
+}
+
 module.exports = {
 	getLang,
+	getLangById,
 };

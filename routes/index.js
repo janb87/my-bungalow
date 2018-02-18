@@ -31,6 +31,7 @@ nextApp
 exports = module.exports = function (app) {
 	// Api
 	app.get('/api/:lang/home-page', routes.api.homePage);
+	app.get('/api/config', routes.api.config);
 	app.get('/api/:lang/config', routes.api.config);
 	app.post('/api/contant', routes.api.contact.submitForm);
 
@@ -39,7 +40,7 @@ exports = module.exports = function (app) {
 		if (nextStarted) {
 			return handler(req, res);
 		}
-		res.send('Application is starting...');
+		res.send('Application is starting... Refresh the page to retry.');
 	});
 
 	// Error handling

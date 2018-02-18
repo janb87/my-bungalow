@@ -2,7 +2,7 @@ const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
 /**
- * Lang (language) Model
+ * Settings Model
  * =============
  */
 
@@ -13,7 +13,7 @@ const Settings = new keystone.List('Settings', {
 
 Settings.add({
 	name: { type: String, required: true, noedit: true },
-	headerBackgroundImage: { type: Types.CloudinaryImage },
+	defaultLanguage: { type: Types.Relationship, ref: 'Lang', required: true },
 });
 
 Settings.register();

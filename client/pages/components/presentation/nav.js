@@ -4,7 +4,7 @@ import colors from '../../../styles/colors';
 import { Link } from '../../../routes';
 import navLinkStyles from '../../../styles/nav-link';
 
-const Nav = ({ lang, translations }) => {
+const Nav = ({ lang, translations, stickToBottom }) => {
 	return (
 		<nav className="nav">
 			<ul>
@@ -33,11 +33,20 @@ const Nav = ({ lang, translations }) => {
 				.nav {
 					height: 101px;
 					margin-bottom: 100px;
+
+					${stickToBottom
+						&& `
+						position: absolute;
+						bottom: 0;
+						right: 0;
+						left: 0;
+						`};
 				}
 
 				.nav > ul {
 					display: flex;
 					height: 100%;
+					width: 100%;
 					margin: 0;
 					padding: 0;
 					flex-direction: column;

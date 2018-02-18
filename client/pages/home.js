@@ -2,6 +2,7 @@ import React from 'react';
 import 'isomorphic-unfetch';
 import colors from '../styles/colors';
 import App from './components/container/app';
+import HomePageHeader from './components/presentation/homePageHeader';
 import { getJson } from '../utils/ajax';
 
 const HomePage = ({ message, backgroundImage, config }) => [
@@ -9,7 +10,8 @@ const HomePage = ({ message, backgroundImage, config }) => [
 		key="app"
 		config={config}
 		backgroundImage={backgroundImage}
-		bottomNav={true}
+		stickMenuToBottom={true}
+		header={<HomePageHeader {...config} />}
 	>
 		<div className="message">
 			<p>{message}</p>
@@ -38,18 +40,23 @@ const HomePage = ({ message, backgroundImage, config }) => [
 ];
 
 HomePage.getInitialProps = async ({ req, query: { lang } }) => {
-	const { message, backgroundImage } = await getJson(
-		req,
-		`/api/${encodeURIComponent(lang || 'nl')}/home-page`
-	);
+	const hasLang = lang && req.url !== '/';
 	const { translations, settings } = await getJson(
 		req,
-		`/api/${encodeURIComponent(lang || 'nl')}/config`
+		`/api/${hasLang ? encodeURIComponent(lang) + '/' : ''}config`
+	);
+	const { message, backgroundImage } = await getJson(
+		req,
+		`/api/${encodeURIComponent(lang || settings.defaultLanguage)}/home-page`
 	);
 	return {
 		message,
 		backgroundImage,
-		config: { translations, settings, lang },
+		config: {
+			translations,
+			settings,
+			lang: lang || settings.defaultLanguage,
+		},
 	};
 };
 
