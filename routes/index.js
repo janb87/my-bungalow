@@ -1,37 +1,18 @@
-/**
- * This file is where you define your application routes and controllers.
- *
- * Start by including the middleware you want to run for every request;
- * you can attach middleware to the pre('routes') and pre('render') events.
- *
- * For simplicity, the default setup for route controllers is for each to be
- * in its own file, and we import all the files in the /routes/views directory.
- *
- * Each of these files is a route controller, and is responsible for all the
- * processing that needs to happen for the route (e.g. loading data, handling
- * form submissions, rendering the view template, etc).
- *
- * Bind each route pattern your application should respond to in the function
- * that is exported from this module, following the examples below.
- *
- * See the Express application routing documentation for more information:
- * http://expressjs.com/api.html#app.VERB
- */
-
-var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+const keystone = require('keystone');
+const middleware = require('./middleware');
+const importRoutes = keystone.importer(__dirname);
 const next = require('next');
-const { parse } = require('url');
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({ dir: 'client', dev });
+const clientRoutes = require('../client/routes');
+const handler = clientRoutes.getRequestHandler(nextApp);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
-var routes = {
+const routes = {
 	api: importRoutes('./api'),
 };
 
@@ -55,20 +36,7 @@ exports = module.exports = function (app) {
 	// Pages
 	app.get('*', (req, res) => {
 		if (nextStarted) {
-			const parsedUrl = parse(req.url, true);
-			const { pathname, query } = parsedUrl;
-			let lang = 'nl';
-			let path = pathname;
-			const parsedPath = pathname.match(/\/(.*?)(\/.*|$)/i);
-			if (
-				parsedPath
-				&& parsedPath.length > 1
-				&& pathname.indexOf('/_next') !== 0
-			) {
-				lang = parsedPath[1] || 'nl';
-				path = parsedPath[2] || '/';
-			}
-			return nextApp.render(req, res, path, { ...query, lang });
+			return handler(req, res);
 		}
 		res.send('Application is starting...');
 	});

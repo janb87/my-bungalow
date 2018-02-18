@@ -36,7 +36,7 @@ HomePage.getInitialProps = async ({ req, query }) => {
 	// TODO: error handling (eg wrong language)
 	const { message, backgroundImage } = await getJson(
 		req,
-		`/api/${encodeURIComponent(query.lang)}/home-page`
+		`/api/${encodeURIComponent(query.lang || 'nl')}/home-page`
 	);
 	return { message, backgroundImage, query };
 };

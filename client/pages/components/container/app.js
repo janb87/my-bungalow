@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '../../../routes';
 import globalStyles from '../../../styles/global';
 import colors from '../../../styles/colors';
 
@@ -7,7 +7,7 @@ const App = ({ lang, backgroundImage, children }) => (
 	<div>
 		<header>
 			<nav className="top-nav">
-				<Link href={`/${lang}/contact`}>
+				<Link route={`/${lang}/contact`}>
 					<a>Contacteer ons</a>
 				</Link>
 			</nav>
@@ -17,22 +17,22 @@ const App = ({ lang, backgroundImage, children }) => (
 			<nav className="bottom-nav">
 				<ul>
 					<li>
-						<Link href={`/${lang}/de-bungalow`}>
+						<Link route={`/${lang}/de-bungalow`}>
 							<a>De bungalow</a>
 						</Link>
 					</li>
 					<li>
-						<Link href={`/${lang}/het-park`}>
+						<Link route={`/${lang}/het-park`}>
 							<a>Het park</a>
 						</Link>
 					</li>
 					<li>
-						<Link href={`/${lang}/in-de-omgeving`}>
+						<Link route={`/${lang}/in-de-omgeving`}>
 							<a>In de omgeving</a>
 						</Link>
 					</li>
 					<li>
-						<Link href={`/${lang}/reserveer`}>
+						<Link route={`/${lang}/reserveer`}>
 							<a>Reserveer nu!</a>
 						</Link>
 					</li>
@@ -67,7 +67,7 @@ const App = ({ lang, backgroundImage, children }) => (
 
 			.bottom-nav {
 				height: 101px;
-				margin-bottom: 1OOpx;
+				margin-bottom: 100px;
 			}
 
 			.bottom-nav > ul {
@@ -97,7 +97,7 @@ const App = ({ lang, backgroundImage, children }) => (
 				border-right: none;
 			}
 
-			@media (min-width: 768px) { 
+			@media (min-width: 768px) {
 				.bottom-nav {
 					margin-bottom: 0;
 				}
