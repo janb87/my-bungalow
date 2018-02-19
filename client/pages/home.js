@@ -5,13 +5,14 @@ import App from './components/container/app';
 import HomePageHeader from './components/presentation/homePageHeader';
 import { getJson } from '../utils/ajax';
 
-const HomePage = ({ message, backgroundImage, config }) => [
+const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 	<App
 		key="app"
 		config={config}
 		backgroundImage={backgroundImage}
 		stickMenuToBottom={true}
 		header={<HomePageHeader {...config} />}
+		userAgent={userAgent}
 	>
 		<div className="message">
 			<p>{message}</p>
@@ -40,10 +41,9 @@ const HomePage = ({ message, backgroundImage, config }) => [
 ];
 
 HomePage.getInitialProps = async ({ req, query: { lang } }) => {
-	const hasLang = lang && req.url !== '/';
 	const { translations, settings } = await getJson(
 		req,
-		`/api/${hasLang ? encodeURIComponent(lang) + '/' : ''}config`
+		`/api/${lang ? encodeURIComponent(lang) + '/' : ''}config`
 	);
 	const { message, backgroundImage } = await getJson(
 		req,
@@ -51,12 +51,13 @@ HomePage.getInitialProps = async ({ req, query: { lang } }) => {
 	);
 	return {
 		message,
-		backgroundImage,
+		backgroundImage: backgroundImage || '/img/home-banner.jpg',
 		config: {
 			translations,
 			settings,
 			lang: lang || settings.defaultLanguage,
 		},
+		userAgent: req && req.headers['user-agent'],
 	};
 };
 

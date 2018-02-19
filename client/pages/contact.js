@@ -4,8 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { getJson } from '../utils/ajax';
 import localize from '../utils/localize';
 
-const Contact = (config) => [
-	<App key="app" config={config}>
+const Contact = ({ config, userAgent }) => [
+	<App key="app" config={config} userAgent={userAgent}>
 		<div className="contact">
 			<p>{localize('contact_title', config.translations)}</p>
 			<RaisedButton label="Default" />
@@ -23,7 +23,10 @@ Contact.getInitialProps = async ({ req, query: { lang } }) => {
 		req,
 		`/api/${encodeURIComponent(lang)}/config`
 	);
-	return { lang, translations, settings };
+	return {
+		config: { lang, translations, settings },
+		userAgent: req && req.headers['user-agent'],
+	};
 };
 
 export default Contact;
