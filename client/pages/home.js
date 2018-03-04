@@ -1,5 +1,4 @@
 import React from 'react';
-import 'isomorphic-unfetch';
 import colors from '../styles/colors';
 import App from './components/container/app';
 import HomePageHeader from './components/presentation/homePageHeader';

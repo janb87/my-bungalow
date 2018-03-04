@@ -1,22 +1,88 @@
 import React from 'react';
 import App from './components/container/app';
-import RaisedButton from 'material-ui/RaisedButton';
-import { getJson } from '../utils/ajax';
+import { getJson, postJson } from '../utils/ajax';
 import localize from '../utils/localize';
+import { spacingXlg } from '../styles/spacing';
+import FormInputField from './components/presentation/formInputField';
+import Button from './components/presentation/button';
 
-const Contact = ({ config, userAgent }) => [
-	<App key="app" config={config} userAgent={userAgent}>
-		<div className="contact">
-			<p>{localize('contact_title', config.translations)}</p>
-			<RaisedButton label="Default" />
-		</div>
-	</App>,
-	<style key="styles" jsx="">{`
-		.contact {
-			height: calc(100% - 200px);
-		}
-	`}</style>,
-];
+const Contact = class extends React.Component {
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			name: '',
+			email: '',
+			message: '',
+		};
+	}
+
+	render () {
+		const { config, userAgent } = this.props;
+		const { name, email, message } = this.state;
+
+		return [
+			<App key="app" config={config} userAgent={userAgent}>
+				<div className="contact">
+					<h1>{localize('contact_title', config.translations)}</h1>
+					<FormInputField
+						name="name"
+						labelResourceId="contact_name"
+						translations={config.translations}
+						onChange={newValue => this._onFieldChange('name', newValue)}
+						value={name}
+					/>
+					<FormInputField
+						name="email"
+						labelResourceId="contact_email"
+						translations={config.translations}
+						onChange={newValue => this._onFieldChange('email', newValue)}
+						value={email}
+					/>
+					<FormInputField
+						name="message"
+						labelResourceId="contact_message"
+						multiLine={true}
+						translations={config.translations}
+						onChange={newValue => this._onFieldChange('message', newValue)}
+						value={message}
+					/>
+					<div
+						className="g-recaptcha"
+						data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
+					/>
+					<Button
+						labelResourceId="contact_submit"
+						translations={config.translations}
+						onClick={() => this._submitForm()}
+					/>
+				</div>
+			</App>,
+			<style key="styles" jsx="">{`
+				.contact {
+					margin: ${spacingXlg()};
+				}
+			`}</style>,
+		];
+	}
+
+	_onFieldChange (fieldName, newValue) {
+		this.setState({
+			[fieldName]: newValue,
+		});
+	}
+
+	async _submitForm () {
+		postJson('/api/contact', this.state)
+			.then(() => {
+				// TODO: Success message
+			})
+			.catch(error => {
+				// TODO: error messages
+				console.log(error);
+			});
+	}
+};
 
 Contact.getInitialProps = async ({ req, query: { lang } }) => {
 	const { translations, settings } = await getJson(

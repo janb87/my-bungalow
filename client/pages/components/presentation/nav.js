@@ -4,7 +4,7 @@ import colors from '../../../styles/colors';
 import { Link } from '../../../routes';
 import navLinkStyles from '../../../styles/nav-link';
 
-const Nav = ({ lang, translations, stickToBottom }) => {
+const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 	return (
 		<nav className="nav">
 			<ul>
@@ -33,6 +33,7 @@ const Nav = ({ lang, translations, stickToBottom }) => {
 				.nav {
 					height: 101px;
 					margin-bottom: 100px;
+					background: ${stickToBottom ? colors.LIGHT_GRAY : colors.PALETTE_1};
 
 					${stickToBottom
 						&& `
@@ -47,13 +48,12 @@ const Nav = ({ lang, translations, stickToBottom }) => {
 					display: flex;
 					height: 100%;
 					width: 100%;
-					margin: 0;
+					${maxWidth && `max-width: ${maxWidth};`}
+					margin: 0 auto;
 					padding: 0;
 					flex-direction: column;
 
 					list-style-type: none;
-
-					background: rgba(0, 0, 0, 0.5);
 				}
 
 				.nav > ul > li {

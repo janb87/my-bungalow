@@ -7,6 +7,7 @@ const colors = {
 	PALETTE_4: '#C9DE55',
 	PALETTE_5: '#7D9100',
 	WHITE: '#fff',
+	LIGHT_GRAY: 'rgba(0, 0, 0, 0.5)',
 };
 
 export default colors;

@@ -13,6 +13,10 @@ exports.create = {
 			translation_nl: 'Uw e-mailadres',
 		},
 		{
+			name: 'contact_message',
+			translation_nl: 'Uw bericht',
+		},
+		{
 			name: 'contact_submit',
 			translation_nl: 'Verzenden',
 		},

@@ -33,7 +33,7 @@ exports = module.exports = function (app) {
 	app.get('/api/:lang/home-page', routes.api.homePage);
 	app.get('/api/config', routes.api.config);
 	app.get('/api/:lang/config', routes.api.config);
-	app.post('/api/contant', routes.api.contact.submitForm);
+	app.post('/api/contact', routes.api.contact.submitForm);
 
 	// Pages
 	app.get('*', (req, res) => {
@@ -46,6 +46,18 @@ exports = module.exports = function (app) {
 	// Error handling
 	app.use((err, req, res, next) => {
 		console.error(err.stack);
+		if (err.name === 'ValidationError') {
+			const errors = Object.keys(err.errors).reduce((accumulator, errKey) => {
+				const fieldError = err.errors[errKey];
+				accumulator[errKey] = {
+					kind: fieldError.kind,
+					path: fieldError.path,
+					message: fieldError.message,
+				};
+				return accumulator;
+			}, {});
+			return res.status(400).json(errors);
+		}
 		// TODO: add status code
 		// + add messages inside errors
 		res.status(500).json(err.message);

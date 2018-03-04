@@ -1,4 +1,5 @@
 import React from 'react';
+import colors from './colors';
 
 export default () => [
 	<link
@@ -14,6 +15,7 @@ export default () => [
 
 				font-family: 'Roboto Slab', serif;
 				font-size: 16px;
+				color: ${colors.PALETTE_1};
 			}
 		`}</style>
 	</span>,
