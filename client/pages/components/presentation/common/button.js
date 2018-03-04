@@ -1,7 +1,7 @@
 import React from 'react';
-import localize from '../../../utils/localize';
-import { spacingMd } from '../../../styles/spacing';
 import RaisedButton from 'material-ui/RaisedButton';
+import localize from '../../../../utils/localize';
+import { spacingMd } from '../../../../styles/spacing';
 
 const Button = ({ labelResourceId, translations, onClick }) => {
 	return [

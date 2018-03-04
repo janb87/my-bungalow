@@ -1,6 +1,6 @@
 import React from 'react';
-import localize from '../../../utils/localize';
-import { Link } from '../../../routes';
+import localize from '../../../../utils/localize';
+import { Link } from '../../../../routes';
 
 const HomePageHeader = ({ lang, translations }) => {
 	return (

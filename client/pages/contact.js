@@ -3,8 +3,8 @@ import App from './components/container/app';
 import { getJson, postJson } from '../utils/ajax';
 import localize from '../utils/localize';
 import { spacingXlg } from '../styles/spacing';
-import FormInputField from './components/presentation/formInputField';
-import Button from './components/presentation/button';
+import FormInputField from './components/presentation/form/formInputField';
+import Button from './components/presentation/common/button';
 
 const Contact = class extends React.Component {
 	constructor (props) {
@@ -25,6 +25,7 @@ const Contact = class extends React.Component {
 			<App key="app" config={config} userAgent={userAgent}>
 				<div className="contact">
 					<h1>{localize('contact_title', config.translations)}</h1>
+					<p>{localize('contact_description', config.translations)}</p>
 					<FormInputField
 						name="name"
 						labelResourceId="contact_name"

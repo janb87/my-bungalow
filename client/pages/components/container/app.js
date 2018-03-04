@@ -3,7 +3,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import globalStyles from '../../../styles/global';
 import screenSizes from '../../../styles/screenSizes';
-import Nav from '../presentation/nav';
+import Nav from '../presentation/common/nav';
 import navLinkStyles from '../../../styles/nav-link';
 import Head from 'next/head';
 import localize from '../../../utils/localize';

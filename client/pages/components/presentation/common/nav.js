@@ -1,8 +1,8 @@
 import React from 'react';
-import localize from '../../../utils/localize';
-import colors from '../../../styles/colors';
-import { Link } from '../../../routes';
-import navLinkStyles from '../../../styles/nav-link';
+import localize from '../../../../utils/localize';
+import colors from '../../../../styles/colors';
+import { Link } from '../../../../routes';
+import navLinkStyles from '../../../../styles/nav-link';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 	return (

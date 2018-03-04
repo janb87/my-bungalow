@@ -5,6 +5,10 @@ exports.create = {
 			translation_nl: 'Neem contact op',
 		},
 		{
+			name: 'contact_description',
+			translation_nl: 'Heeft u een vraag? Wenst u meer informatie?',
+		},
+		{
 			name: 'contact_name',
 			translation_nl: 'Uw naam',
 		},
