@@ -74,6 +74,7 @@ const App = ({
 					}
 
 					.page-content {
+						height: 100%;
 						margin: 0 auto;
 						${!backgroundImage && `max-width: ${screenSizes.LG_MIN};`};
 					}

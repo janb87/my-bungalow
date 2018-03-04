@@ -48,12 +48,12 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 					display: flex;
 					height: 100%;
 					width: 100%;
-					${maxWidth && `max-width: ${maxWidth};`}
 					margin: 0 auto;
 					padding: 0;
 					flex-direction: column;
 
 					list-style-type: none;
+					${maxWidth && `max-width: ${maxWidth};`}
 				}
 
 				.nav > ul > li {
