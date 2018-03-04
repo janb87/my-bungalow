@@ -1,16 +1,17 @@
 import React from 'react';
 import localize from '../../../../utils/localize';
 import { Link } from '../../../../routes';
+import navLinkStyles from '../../../../styles/nav-link';
 
 const HomePageHeader = ({ lang, translations }) => {
 	return (
-		<nav className="top-nav">
+		<nav className="home-page-header-nav">
 			<Link route="contact" params={{ lang }}>
 				<a>{localize('contact_title', translations)}</a>
 			</Link>
 			<style jsx="">
 				{`
-					nav.top-nav > a {
+					nav.home-page-header-nav > a {
 						float: right;
 						margin: 20px 50px 20px;
 
@@ -18,6 +19,9 @@ const HomePageHeader = ({ lang, translations }) => {
 					}
 				`}
 			</style>
+			{React.createElement(navLinkStyles, {
+				selector: '.home-page-header-nav',
+			})}
 		</nav>
 	);
 };

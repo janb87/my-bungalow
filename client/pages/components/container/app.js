@@ -4,10 +4,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import globalStyles from '../../../styles/global';
 import screenSizes from '../../../styles/screenSizes';
 import Nav from '../presentation/common/nav';
-import navLinkStyles from '../../../styles/nav-link';
 import Head from 'next/head';
 import localize from '../../../utils/localize';
 import colors from '../../../styles/colors';
+import DefaultHeader from '../presentation/header/defaultHeader';
 
 const App = ({
 	config: { lang, translations, settings },
@@ -17,21 +17,25 @@ const App = ({
 	header,
 	userAgent,
 }) => {
+	if (!header) {
+		header = <DefaultHeader lang={lang} translations={translations} />;
+	}
 	const muiTheme = getMuiTheme(
 		{
+			fontFamily: 'Montserrat, serif',
 			palette: {
-				primary1Color: colors.PALETTE_5,
-				primary2Color: colors.PALETTE_1,
+				primary1Color: colors.PALETTE_1,
+				primary2Color: colors.PALETTE_2,
 				primary3Color: colors.PALETTE_3,
-				accent1Color: colors.PALETTE_2,
-				accent2Color: colors.PALETTE_4,
-				accent3Color: colors.PALETTE_3,
-				textColor: colors.PALETTE_1,
-				secondaryTextColor: colors.PALETTE_2,
-				alternateTextColor: colors.WHITE,
-				canvasColor: colors.WHITE,
-				borderColor: colors.LIGHT_GRAY,
-				disabledColor: colors.LIGHT_GRAY,
+				accent1Color: colors.green,
+				accent2Color: colors.yellow,
+				accent3Color: colors.danger,
+				textColor: colors.dark,
+				secondaryTextColor: colors.gray_dark,
+				alternateTextColor: colors.white,
+				canvasColor: colors.white,
+				borderColor: colors.gray_light,
+				disabledColor: colors.gray_light,
 			},
 		},
 		{
@@ -79,7 +83,6 @@ const App = ({
 						${!backgroundImage && `max-width: ${screenSizes.LG_MIN};`};
 					}
 				`}</style>
-				{React.createElement(navLinkStyles)}
 				{React.createElement(globalStyles)}
 			</div>
 		</MuiThemeProvider>

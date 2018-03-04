@@ -24,10 +24,11 @@ const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 			justify-content: center;
 			height: calc(100% - 200px);
 			margin: 0 0 0 50px;
+			width: 100%;
 
 			font-size: 2em;
 			max-width: 450px;
-			color: ${colors.WHITE};
+			color: ${colors.white};
 		}
 
 		@media (min-width: 768px) {

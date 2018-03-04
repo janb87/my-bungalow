@@ -4,7 +4,7 @@ import colors from './colors';
 export default () => [
 	<link
 		key="global-font"
-		href="https://fonts.googleapis.com/css?family=Roboto+Slab"
+		href="https://fonts.googleapis.com/css?family=Montserrat"
 		rel="stylesheet"
 	/>,
 	<span key="global-styles">
@@ -13,9 +13,19 @@ export default () => [
 				padding: 0;
 				margin: 0;
 
-				font-family: 'Roboto Slab', serif;
+				font-family: 'Montserrat', serif;
 				font-size: 16px;
-				color: ${colors.PALETTE_1};
+				color: ${colors.black};
+			}
+
+			a {
+				color: ${colors.green};
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: ${colors.teal};
+				text-decoration: none;
 			}
 		`}</style>
 	</span>,

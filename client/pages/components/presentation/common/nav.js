@@ -3,10 +3,11 @@ import localize from '../../../../utils/localize';
 import colors from '../../../../styles/colors';
 import { Link } from '../../../../routes';
 import navLinkStyles from '../../../../styles/nav-link';
+import { spacingMd, spacingLg } from '../../../../styles/spacing';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 	return (
-		<nav className="nav">
+		<nav className="main-nav">
 			<ul>
 				<li>
 					<Link route={`/${lang}/de-bungalow`}>
@@ -30,21 +31,19 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 				</li>
 			</ul>
 			<style jsx="">{`
-				.nav {
-					height: 101px;
-					margin-bottom: 100px;
-					background: ${stickToBottom ? colors.LIGHT_GRAY : colors.PALETTE_1};
+				.main-nav {
+					background: ${stickToBottom ? colors.gray_light : colors.green};
 
 					${stickToBottom
 						&& `
 						position: absolute;
-						bottom: 0;
+						top: 63px;
 						right: 0;
 						left: 0;
 						`};
 				}
 
-				.nav > ul {
+				.main-nav > ul {
 					display: flex;
 					height: 100%;
 					width: 100%;
@@ -56,34 +55,51 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 					${maxWidth && `max-width: ${maxWidth};`}
 				}
 
-				.nav > ul > li {
+				.main-nav > ul > li {
 					flex: 1;
 					display: flex;
+					margin: ${spacingLg()} 0 0;
 
 					font-size: 1em;
 					align-items: center;
 					justify-content: center;
-
-					border-right: 1px solid ${colors.WHITE};
 				}
 
-				.nav > ul > li:last-child {
-					border-right: none;
+				.main-nav > ul > li:last-child {
+					margin-bottom: ${spacingMd()};
 				}
 
 				@media (min-width: 768px) {
-					.nav {
-						margin-bottom: 0;
+					.main-nav {
+						height: 101px;
+
+						${stickToBottom
+							&& `
+							top: inherit;
+							bottom: 0;
+							`};
 					}
-					.nav > ul {
+
+					.main-nav > ul {
 						flex-direction: row;
 					}
-					.nav > ul > li {
+
+					.main-nav > ul > li {
+						margin: 0;
 						font-size: 1.4em;
+
+						border-right: 1px solid ${colors.white};
+					}
+
+					.main-nav > ul > li:last-child {
+						border-right: none;
+						margin-bottom: 0;
 					}
 				}
 			`}</style>
-			{React.createElement(navLinkStyles)}
+			{React.createElement(navLinkStyles, {
+				selector: '.main-nav',
+			})}
 		</nav>
 	);
 };

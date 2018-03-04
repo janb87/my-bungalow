@@ -6,20 +6,23 @@ import { spacingXlg } from '../styles/spacing';
 import FormInputField from './components/presentation/form/formInputField';
 import Button from './components/presentation/common/button';
 
+const INITIAL_STATE = {
+	errors: undefined,
+	name: '',
+	email: '',
+	message: '',
+};
+
 const Contact = class extends React.Component {
 	constructor (props) {
 		super(props);
 
-		this.state = {
-			name: '',
-			email: '',
-			message: '',
-		};
+		this.state = INITIAL_STATE;
 	}
 
 	render () {
 		const { config, userAgent } = this.props;
-		const { name, email, message } = this.state;
+		const { name, email, message, errors = {} } = this.state;
 
 		return [
 			<App key="app" config={config} userAgent={userAgent}>
@@ -32,6 +35,7 @@ const Contact = class extends React.Component {
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('name', newValue)}
 						value={name}
+						error={errors.name}
 					/>
 					<FormInputField
 						name="email"
@@ -39,6 +43,7 @@ const Contact = class extends React.Component {
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('email', newValue)}
 						value={email}
+						error={errors.email}
 					/>
 					<FormInputField
 						name="message"
@@ -47,6 +52,7 @@ const Contact = class extends React.Component {
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('message', newValue)}
 						value={message}
+						error={errors.message}
 					/>
 					<div
 						className="g-recaptcha"
@@ -76,11 +82,10 @@ const Contact = class extends React.Component {
 	async _submitForm () {
 		postJson('/api/contact', this.state)
 			.then(() => {
-				// TODO: Success message
+				this.setState({ ...INITIAL_STATE });
 			})
 			.catch(error => {
-				// TODO: error messages
-				console.log(error);
+				this.setState({ errors: JSON.parse(error.message) });
 			});
 	}
 };

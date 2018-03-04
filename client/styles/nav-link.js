@@ -1,14 +1,14 @@
 import React from 'react';
 import colors from './colors';
 
-export default () => (
+export default ({ selector }) => (
 	<style jsx="">{`
-		a {
-			color: ${colors.WHITE};
+		${selector} a {
+			color: ${colors.white};
 			text-decoration: none;
 		}
 
-		a:hover {
+		${selector} a:hover {
 			text-decoration: none;
 			opacity: 0.6;
 		}

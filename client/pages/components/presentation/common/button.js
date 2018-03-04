@@ -8,6 +8,7 @@ const Button = ({ labelResourceId, translations, onClick }) => {
 		<div key="button" className="button">
 			<RaisedButton
 				label={localize(labelResourceId, translations)}
+				secondary={true}
 				onClick={onClick}
 			/>
 		</div>,
