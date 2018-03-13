@@ -22,7 +22,7 @@ const App = ({
 	}
 	const muiTheme = getMuiTheme(
 		{
-			fontFamily: 'Montserrat, serif',
+			fontFamily: 'Roboto Slab, serif',
 			palette: {
 				primary1Color: colors.PALETTE_1,
 				primary2Color: colors.PALETTE_2,

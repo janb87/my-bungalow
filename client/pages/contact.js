@@ -5,12 +5,14 @@ import localize from '../utils/localize';
 import { spacingXlg } from '../styles/spacing';
 import FormInputField from './components/presentation/form/formInputField';
 import Button from './components/presentation/common/button';
+import LoaderCurtain from './components/presentation/common/loaderCurtain';
 
 const INITIAL_STATE = {
 	errors: undefined,
 	name: '',
 	email: '',
 	message: '',
+	isSubmitting: false,
 };
 
 const Contact = class extends React.Component {
@@ -22,10 +24,11 @@ const Contact = class extends React.Component {
 
 	render () {
 		const { config, userAgent } = this.props;
-		const { name, email, message, errors = {} } = this.state;
+		const { name, email, message, isSubmitting, errors = {} } = this.state;
 
 		return [
 			<App key="app" config={config} userAgent={userAgent}>
+				<LoaderCurtain show={isSubmitting} />
 				<div className="contact">
 					<h1>{localize('contact_title', config.translations)}</h1>
 					<p>{localize('contact_description', config.translations)}</p>
@@ -54,10 +57,12 @@ const Contact = class extends React.Component {
 						value={message}
 						error={errors.message}
 					/>
+					{/* TODO: captcha
 					<div
 						className="g-recaptcha"
 						data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
 					/>
+					*/}
 					<Button
 						labelResourceId="contact_submit"
 						translations={config.translations}
@@ -80,12 +85,16 @@ const Contact = class extends React.Component {
 	}
 
 	async _submitForm () {
+		this.setState({ isSubmitting: true });
 		postJson('/api/contact', this.state)
 			.then(() => {
 				this.setState({ ...INITIAL_STATE });
 			})
 			.catch(error => {
-				this.setState({ errors: JSON.parse(error.message) });
+				this.setState({
+					isSubmitting: false,
+					errors: JSON.parse(error.message),
+				});
 			});
 	}
 };

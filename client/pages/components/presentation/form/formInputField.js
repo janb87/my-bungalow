@@ -11,6 +11,7 @@ const FormInputField = ({
 	value,
 	error,
 	multiLine = false,
+	fullWidth = true,
 }) => {
 	return [
 		<div key="field" className="form-field">
@@ -20,18 +21,20 @@ const FormInputField = ({
 				floatingLabelText={localize(labelResourceId, translations)}
 				floatingLabelFixed={false}
 				multiLine={multiLine}
+				rows={multiLine ? 5 : undefined}
 				onChange={(e, value) => onChange(value)}
 				value={value}
 				errorText={error && error.message}
+				fullWidth={fullWidth}
+				hintStyle={{
+					top: '36px',
+				}}
 			/>
 		</div>,
 		<style key="styles" jsx="">{`
 			.form-field {
 				min-width: 300px;
-				margin: ${spacingMd()} 0;
-			}
-			.form-field > div {
-				width: 100% !important;
+				margin: 0 0 ${spacingMd()} 0;
 			}
 		`}</style>,
 	];
