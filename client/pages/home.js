@@ -3,6 +3,8 @@ import colors from '../styles/colors';
 import App from './components/container/app';
 import HomePageHeader from './components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
+import screenSizes from '../styles/screenSizes';
+import { spacingXlg, spacingLg } from '../styles/spacing';
 
 const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 	<App
@@ -23,16 +25,18 @@ const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 			flex-direction: column;
 			justify-content: center;
 			height: 100%;
-			margin: 0 50px;
+			margin: 0 ${spacingLg()};
 			width: calc(100% - 100px);
 
 			font-size: 2em;
 			color: ${colors.white};
 		}
 
-		@media (min-width: 768px) {
+		@media (min-width: ${screenSizes.SM_MIN}) {
 			.message {
 				height: calc(100% - 100px);
+				margin: 0 ${spacingXlg()};
+
 				font-size: 2.5em;
 			}
 		}

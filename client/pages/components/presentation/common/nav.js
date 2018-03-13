@@ -3,7 +3,8 @@ import localize from '../../../../utils/localize';
 import colors from '../../../../styles/colors';
 import { Link } from '../../../../routes';
 import navLinkStyles from '../../../../styles/nav-link';
-import { spacingMd, spacingLg } from '../../../../styles/spacing';
+import { spacingLg } from '../../../../styles/spacing';
+import screenSizes from '../../../../styles/screenSizes';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 	return (
@@ -37,7 +38,7 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 					${stickToBottom
 						&& `
 						position: absolute;
-						top: 63px;
+						top: 53px;
 						right: 0;
 						left: 0;
 						`};
@@ -66,10 +67,10 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 				}
 
 				.main-nav > ul > li:last-child {
-					margin-bottom: ${spacingMd()};
+					margin-bottom: ${spacingLg()};
 				}
 
-				@media (min-width: 768px) {
+				@media (min-width: ${screenSizes.SM_MIN}) {
 					.main-nav {
 						height: 101px;
 

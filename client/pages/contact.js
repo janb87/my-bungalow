@@ -2,10 +2,11 @@ import React from 'react';
 import App from './components/container/app';
 import { getJson, postJson } from '../utils/ajax';
 import localize from '../utils/localize';
-import { spacingXlg } from '../styles/spacing';
+import { spacingLg, spacingXlg } from '../styles/spacing';
 import FormInputField from './components/presentation/form/formInputField';
 import Button from './components/presentation/common/button';
 import LoaderCurtain from './components/presentation/common/loaderCurtain';
+import screenSizes from '../styles/screenSizes';
 
 const INITIAL_STATE = {
 	errors: undefined,
@@ -72,7 +73,12 @@ const Contact = class extends React.Component {
 			</App>,
 			<style key="styles" jsx="">{`
 				.contact {
-					margin: ${spacingXlg()};
+					margin: ${spacingLg()};
+				}
+				@media (min-width: ${screenSizes.SM_MIN}) {
+					.contact {
+						margin: ${spacingXlg()};
+					}
 				}
 			`}</style>,
 		];

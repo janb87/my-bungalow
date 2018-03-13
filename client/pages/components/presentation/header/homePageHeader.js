@@ -2,6 +2,8 @@ import React from 'react';
 import localize from '../../../../utils/localize';
 import { Link } from '../../../../routes';
 import navLinkStyles from '../../../../styles/nav-link';
+import screenSizes from '../../../../styles/screenSizes';
+import { spacingXlg, spacingMd } from '../../../../styles/spacing';
 
 const HomePageHeader = ({ lang, translations }) => {
 	return (
@@ -13,9 +15,17 @@ const HomePageHeader = ({ lang, translations }) => {
 				{`
 					nav.home-page-header-nav > a {
 						float: right;
-						margin: 20px 50px 20px;
+						margin: ${spacingMd()} ${spacingMd()} ${spacingMd()};
 
-						font-size: 1.2em;
+						font-size: 1em;
+					}
+
+					@media (min-width: ${screenSizes.SM_MIN}) {
+						nav.home-page-header-nav > a {
+							margin: ${spacingMd()} ${spacingXlg()} ${spacingMd()};
+
+							font-size: 1.2em;
+						}
 					}
 				`}
 			</style>

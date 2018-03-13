@@ -2,7 +2,7 @@ import React from 'react';
 import localize from '../../../../utils/localize';
 import { Link } from '../../../../routes';
 import screenSizes from '../../../../styles/screenSizes';
-import { spacingLg, spacingXlg } from '../../../../styles/spacing';
+import { spacingMd, spacingLg, spacingXlg } from '../../../../styles/spacing';
 
 const DefaultHeader = ({ lang, translations }) => {
 	return (
@@ -14,11 +14,21 @@ const DefaultHeader = ({ lang, translations }) => {
 				{`
 					nav.default-header-nav {
 						max-width: ${screenSizes.LG_MIN};
-						margin: ${spacingLg()} auto;
+						margin: ${spacingMd()} auto;
 					}
 					nav.default-header-nav > a {
-						font-size: 1.2em;
-						margin: 0 ${spacingXlg()};
+						font-size: 1em;
+						margin: 0 ${spacingLg()};
+					}
+
+					@media (min-width: ${screenSizes.SM_MIN}) {
+						nav.default-header-nav {
+							margin: ${spacingLg()} auto;
+						}
+						nav.default-header-nav > a {
+							font-size: 1.2em;
+							margin: 0 ${spacingXlg()};
+						}
 					}
 				`}
 			</style>
