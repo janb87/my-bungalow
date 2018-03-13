@@ -22,12 +22,11 @@ const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			height: calc(100% - 200px);
-			margin: 0 0 0 50px;
-			width: 100%;
+			height: 100%;
+			margin: 0 50px;
+			width: calc(100% - 100px);
 
 			font-size: 2em;
-			max-width: 450px;
 			color: ${colors.white};
 		}
 
