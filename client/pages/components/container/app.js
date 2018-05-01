@@ -70,7 +70,7 @@ const App = ({
 				</main>
 				<style jsx="">{`
 					main {
-						height: 100vh;
+						${stickMenuToBottom && `height: 100vh;`}
 						${backgroundImage
 							&& `background-image: url(${backgroundImage});`} background-repeat: no-repeat;
 						background-size: cover;

@@ -20,7 +20,9 @@ const Bungalow = ({ config, userAgent, bungalowPage }) => {
 				<section
 					dangerouslySetInnerHTML={{ __html: bungalowPage.characteristics }}
 				/>
-				<Gallery photos={photos} translations={config.translations} />
+				<section>
+					<Gallery photos={photos} translations={config.translations} />
+				</section>
 				<h2>{localize('the_bungalow_house_rules', config.translations)}</h2>
 				<section dangerouslySetInnerHTML={{ __html: bungalowPage.rules }} />
 			</div>
@@ -28,6 +30,12 @@ const Bungalow = ({ config, userAgent, bungalowPage }) => {
 		<style key="styles" jsx="">{`
 			.the-bungalow {
 				margin: ${spacingLg()};
+			}
+			.the-bungalow section {
+				margin: ${spacingXlg()} 0;
+			}
+			.the-bungalow h2 + section {
+				margin-top: 0;
 			}
 			@media (min-width: ${screenSizes.SM_MIN}) {
 				.the-bungalow {
