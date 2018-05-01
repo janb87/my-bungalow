@@ -13,11 +13,12 @@ const Contact = new keystone.List('Contact', {
 });
 
 Contact.add({
-	name: { type: String, required: true },
-	email: { type: Types.Email, required: true },
-	message: { type: Types.Textarea, required: true },
+	createdAt: { label: 'Datum', type: Date, default: Date.now },
+	name: { label: 'Naam', type: String, required: true },
+	email: { label: 'E-mail', type: Types.Email, required: true },
+	message: { label: 'Boodschap', type: Types.Textarea, required: true },
 });
 
 Contact.defaultSort = '-createdAt';
-Contact.defaultColumns = 'name, email, message';
+Contact.defaultColumns = 'createdAt, name, email, message';
 Contact.register();

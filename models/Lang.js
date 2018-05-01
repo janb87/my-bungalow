@@ -11,7 +11,7 @@ const Lang = new keystone.List('Lang', {
 });
 
 Lang.add({
-	name: { type: String, required: true },
+	name: { label: 'Naam', type: String, required: true },
 });
 
 Lang.register();

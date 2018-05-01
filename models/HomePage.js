@@ -12,12 +12,12 @@ const HomePage = new keystone.List('HomePage', {
 });
 
 HomePage.add({
-	name: { type: String, noedit: true, required: true },
-	language: { type: Types.Relationship, noedit: true, ref: 'Lang', required: true },
-	message: { type: String, required: true },
-	backgroundImage: { type: Types.CloudinaryImage },
+	name: { label: 'Naam', type: String, noedit: true, required: true },
+	language: { label: 'Taal', type: Types.Relationship, noedit: true, ref: 'Lang', required: true },
+	message: { label: 'Tekst', type: String, required: true },
+	backgroundImage: { label: 'Achtergrond', type: Types.CloudinaryImage, folder: 'home' },
 });
 
-HomePage.defaultSort = '-createdAt';
+HomePage.defaultSort = '-name';
 HomePage.defaultColumns = 'name, language, message, backgroundImage';
 HomePage.register();

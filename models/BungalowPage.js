@@ -7,30 +7,41 @@ var Types = keystone.Field.Types;
  */
 
 const BungalowPage = new keystone.List('BungalowPage', {
-	nocreate: false,
+	nocreate: true,
 	nodelete: true,
 });
 
 BungalowPage.add({
-	name: { type: String, noedit: true, required: true },
+	name: { label: 'Naam', type: String, noedit: true, required: true },
 	language: {
+		label: 'Taal',
 		type: Types.Relationship,
 		noedit: true,
 		ref: 'Lang',
 		required: true,
-		initial: false,
 	},
-	images: { type: Types.CloudinaryImages, folder: 'bungalow' },
+	images: { label: 'Album', type: Types.Relationship, ref: 'Gallery' },
 	characteristics: {
+		label: 'Algemene info',
 		type: Types.Html,
 		wysiwyg: true,
 		height: 150,
 		required: true,
-		initial: false,
 	},
-	groundPlanImage: { type: Types.CloudinaryImage, required: true, initial: false },
+	rules: {
+		label: 'Huisregels',
+		type: Types.Html,
+		wysiwyg: true,
+		height: 150,
+		required: true,
+	},
+	groundPlanImage: {
+		label: 'Grondplan',
+		type: Types.CloudinaryImage,
+		folder: 'bungalow',
+	},
 });
 
-BungalowPage.defaultSort = '-createdAt';
+BungalowPage.defaultSort = '-name';
 BungalowPage.defaultColumns = 'name, language';
 BungalowPage.register();

@@ -56,7 +56,7 @@ Translations.add({
 	},
 });
 
-Translations.defaultSort = '-createdAt';
+Translations.defaultSort = '+name';
 Translations.defaultColumns
 	= 'name, translation_test, translation_nl, translation_fr, translation_en';
 Translations.register();

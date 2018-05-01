@@ -2,6 +2,7 @@ const keystone = require('keystone');
 const Languages = keystone.list('Lang');
 const Settings = keystone.list('Settings');
 const HomePage = keystone.list('HomePage');
+const BungalowPage = keystone.list('BungalowPage');
 
 const homePages = {
 	nl: {
@@ -15,18 +16,39 @@ const homePages = {
 	en: {
 		name: 'Start pagina (en)',
 		message: 'Welcome',
-		language: 'en',
 	},
 	test: {
 		name: 'Start pagina (test)',
 		message: 'Welkom',
-		language: 'test',
 	},
 };
 
-function createNewHomePages () {
+const bungalowPages = {
+	nl: {
+		name: 'Bungalow pagina (nl)',
+		characteristics: '<p>Bungalow info</p>',
+		rules: '<p>Huisregels</p>',
+	},
+	fr: {
+		name: 'Bungalow pagina (fr)',
+		characteristics: '<p>Bungalow info</p>',
+		rules: '<p>Huisregels</p>',
+	},
+	en: {
+		name: 'Bungalow pagina (en)',
+		characteristics: '<p>Bungalow info</p>',
+		rules: '<p>Huisregels</p>',
+	},
+	test: {
+		name: 'Bungalow pagina (test)',
+		characteristics: '<p>Bungalow info</p>',
+		rules: '<p>Huisregels</p>',
+	},
+};
+
+function createNewPages () {
 	return new Promise((resolve, reject) => {
-		Languages.model.find().exec((err, languages) => {
+		Languages.model.find().exec(async (err, languages) => {
 			if (err) {
 				throw err;
 			}
@@ -41,7 +63,22 @@ function createNewHomePages () {
 						})
 					);
 				}
+				if (bungalowPages[lang.name]) {
+					promises.push(
+						createBungalowPage({
+							...bungalowPages[lang.name],
+							language: lang,
+						})
+					);
+				}
 			});
+
+			try {
+				await Promise.all(promises);
+			} catch (error) {
+				reject(error);
+				return;
+			}
 
 			resolve();
 		});
@@ -57,6 +94,20 @@ function createHomePage (homePage) {
 				reject(err);
 			} else {
 				resolve(newHomePage);
+			}
+		});
+	});
+}
+
+function createBungalowPage (bungalowPage) {
+	return new Promise((resolve, reject) => {
+		const newBungalowPage = new BungalowPage.model(bungalowPage);
+
+		newBungalowPage.save(err => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(newBungalowPage);
 			}
 		});
 	});
@@ -83,6 +134,6 @@ function createSettings () {
 
 exports = module.exports = async function (done) {
 	await createSettings();
-	await createNewHomePages();
+	await createNewPages();
 	done();
 };
