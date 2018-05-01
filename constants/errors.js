@@ -1,6 +1,7 @@
 module.exports = [
 	'language_not_found',
 	'page_not_found',
+	'gallery_not_found',
 	'contact_submit_error',
 ].reduce((acc, curr) => {
 	return {

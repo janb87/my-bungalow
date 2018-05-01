@@ -75,5 +75,21 @@ exports.create = {
 			name: 'home_title',
 			translation_nl: 'Startpagina',
 		},
+		{
+			name: 'the_bungalow_title',
+			translation_nl: 'De Bungalow',
+		},
+		{
+			name: 'the_bungalow_general',
+			translation_nl: 'Algemene info',
+		},
+		{
+			name: 'the_bungalow_house_rules',
+			translation_nl: 'Huisregels',
+		},
+		{
+			name: 'the_bungalow_no_images',
+			translation_nl: 'Geen afbeeldingen',
+		},
 	],
 };
