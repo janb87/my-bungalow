@@ -20,11 +20,11 @@ function getTranslations (lang) {
 						if (translation.isHtml === true) {
 							value
 								= translation[`translation_${lang}_html`]
-								|| translation[`translation_nl_html`];
+								|| translation.translation_nl_html;
 						} else {
 							value
 								= translation[`translation_${lang}`]
-								|| translation[`translation_nl`];
+								|| translation.translation_nl;
 						}
 						return {
 							name: translation.name,
