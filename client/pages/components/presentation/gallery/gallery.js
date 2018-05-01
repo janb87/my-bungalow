@@ -3,6 +3,7 @@ import localize from '../../../../utils/localize';
 import ReactPhotoGallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
 import Measure from 'react-measure';
+import screenSizes from '../../../../styles/screenSizes';
 
 class Gallery extends PureComponent {
 	constructor (props) {
@@ -32,21 +33,21 @@ class Gallery extends PureComponent {
 				}
 			>
 				{({ measureRef }) => {
-					if (width < 1) {
-						return <div ref={measureRef} />;
-					}
 					let columns = 1;
-					if (width >= 480) {
+					if (width >= parseInt(screenSizes.XS_MIN, 10)) {
 						columns = 2;
 					}
-					if (width >= 1024) {
+					if (width >= parseInt(screenSizes.SM_MIN, 10)) {
 						columns = 3;
 					}
-					if (width >= 1824) {
+					if (width >= parseInt(screenSizes.LG_MIN, 10)) {
 						columns = 4;
 					}
 					return (
-						<div ref={measureRef}>
+						<div
+							ref={measureRef}
+							style={{ visibility: width < 1 ? 'hidden' : 'visible' }}
+						>
 							<ReactPhotoGallery
 								columns={columns}
 								photos={photos}
