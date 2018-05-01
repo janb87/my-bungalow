@@ -36,7 +36,7 @@ const Bungalow = ({ config, userAgent, bungalowPage }) => {
 			}
 		`}</style>,
 	];
-}
+};
 
 Bungalow.getInitialProps = async ({ req, query: { lang } }) => {
 	const { translations, settings } = await getJson(

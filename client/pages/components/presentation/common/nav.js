@@ -7,6 +7,7 @@ import { spacingLg } from '../../../../styles/spacing';
 import screenSizes from '../../../../styles/screenSizes';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
+	// TODO: localize urls
 	return (
 		<nav className="main-nav">
 			<ul>
