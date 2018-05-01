@@ -13,11 +13,11 @@ const HomePage = new keystone.List('HomePage', {
 
 HomePage.add({
 	name: { type: String, noedit: true, required: true },
+	language: { type: Types.Relationship, noedit: true, ref: 'Lang', required: true },
 	message: { type: String, required: true },
 	backgroundImage: { type: Types.CloudinaryImage },
-	language: { type: Types.Relationship, noedit: true, ref: 'Lang', required: true },
 });
 
 HomePage.defaultSort = '-createdAt';
-HomePage.defaultColumns = 'name, message, backgroundImage';
+HomePage.defaultColumns = 'name, language, message, backgroundImage';
 HomePage.register();
