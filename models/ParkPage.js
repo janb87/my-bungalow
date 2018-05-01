@@ -6,12 +6,12 @@ var Types = keystone.Field.Types;
  * =============
  */
 
-const BungalowPage = new keystone.List('BungalowPage', {
+const ParkPage = new keystone.List('ParkPage', {
 	nocreate: true,
 	nodelete: true,
 });
 
-BungalowPage.add({
+ParkPage.add({
 	name: { label: 'Naam', type: String, noedit: true, required: true },
 	language: {
 		label: 'Taal',
@@ -21,27 +21,22 @@ BungalowPage.add({
 		required: true,
 	},
 	galleryId: { label: 'Album', type: Types.Relationship, ref: 'Gallery' },
-	characteristics: {
-		label: 'Algemene info',
+	intro: {
+		label: 'Introductie',
 		type: Types.Html,
 		wysiwyg: true,
 		height: 150,
 		required: true,
 	},
-	rules: {
-		label: 'Huisregels',
+	accomodations: {
+		label: 'Accomodaties',
 		type: Types.Html,
 		wysiwyg: true,
 		height: 150,
 		required: true,
-	},
-	groundPlanImage: {
-		label: 'Grondplan',
-		type: Types.CloudinaryImage,
-		folder: 'bungalow',
 	},
 });
 
-BungalowPage.defaultSort = '-name';
-BungalowPage.defaultColumns = 'name, language';
-BungalowPage.register();
+ParkPage.defaultSort = '-name';
+ParkPage.defaultColumns = 'name, language';
+ParkPage.register();

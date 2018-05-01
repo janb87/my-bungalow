@@ -3,6 +3,7 @@ const Languages = keystone.list('Lang');
 const Settings = keystone.list('Settings');
 const HomePage = keystone.list('HomePage');
 const BungalowPage = keystone.list('BungalowPage');
+const ParkPage = keystone.list('ParkPage');
 
 const homePages = {
 	nl: {
@@ -46,6 +47,29 @@ const bungalowPages = {
 	},
 };
 
+const parkPages = {
+	nl: {
+		name: 'Park pagina (nl)',
+		intro: '<p>Park info</p>',
+		accomodations: '<p>Accomodaties</p>',
+	},
+	fr: {
+		name: 'Park pagina (fr)',
+		intro: '<p>Park info</p>',
+		accomodations: '<p>Accomodaties</p>',
+	},
+	en: {
+		name: 'Park pagina (en)',
+		intro: '<p>Park info</p>',
+		accomodations: '<p>Accomodaties</p>',
+	},
+	test: {
+		name: 'Park pagina (test)',
+		intro: '<p>Park info</p>',
+		accomodations: '<p>Accomodaties</p>',
+	},
+};
+
 function createNewPages () {
 	return new Promise((resolve, reject) => {
 		Languages.model.find().exec(async (err, languages) => {
@@ -57,18 +81,26 @@ function createNewPages () {
 			languages.forEach(lang => {
 				if (homePages[lang.name]) {
 					promises.push(
-						createHomePage({
+						createPage({
 							...homePages[lang.name],
 							language: lang,
-						})
+						}, HomePage)
 					);
 				}
 				if (bungalowPages[lang.name]) {
 					promises.push(
-						createBungalowPage({
+						createPage({
 							...bungalowPages[lang.name],
 							language: lang,
-						})
+						}, BungalowPage)
+					);
+				}
+				if (parkPages[lang.name]) {
+					promises.push(
+						createPage({
+							...parkPages[lang.name],
+							language: lang,
+						}, ParkPage)
 					);
 				}
 			});
@@ -85,29 +117,15 @@ function createNewPages () {
 	});
 }
 
-function createHomePage (homePage) {
+function createPage (model, instance) {
 	return new Promise((resolve, reject) => {
-		const newHomePage = new HomePage.model(homePage);
+		const newPage = new instance.model(model);
 
-		newHomePage.save(err => {
+		newPage.save(err => {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(newHomePage);
-			}
-		});
-	});
-}
-
-function createBungalowPage (bungalowPage) {
-	return new Promise((resolve, reject) => {
-		const newBungalowPage = new BungalowPage.model(bungalowPage);
-
-		newBungalowPage.save(err => {
-			if (err) {
-				reject(err);
-			} else {
-				resolve(newBungalowPage);
+				resolve(newPage);
 			}
 		});
 	});

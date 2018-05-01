@@ -91,5 +91,13 @@ exports.create = {
 			name: 'gallery_no_images',
 			translation_nl: 'Geen afbeeldingen',
 		},
+		{
+			name: 'the_park_title',
+			translation_nl: 'Het park',
+		},
+		{
+			name: 'the_park_accomodations',
+			translation_nl: 'Accomodaties',
+		},
 	],
 };

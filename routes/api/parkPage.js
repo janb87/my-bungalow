@@ -1,5 +1,5 @@
 const { getLang } = require('../../services/lang');
-const { getBungalowPage } = require('../../services/bungalowPage');
+const { getParkPage } = require('../../services/parkPage');
 const { getGalleryById } = require('../../services/gallery');
 const { GALLERY_NOT_FOUND } = require('../../constants/errors');
 
@@ -11,8 +11,8 @@ exports = module.exports = async function (req, res, next) {
 			throw new Error('Language parameter is not set');
 		}
 		const langModel = languageId ? { id: languageId } : await getLang(lang);
-		const bungalowPage = await getBungalowPage(langModel.id);
-		const { groundPlanImage, galleryId, characteristics, rules } = bungalowPage;
+		const parkPage = await getParkPage(langModel.id);
+		const { galleryId, intro, accomodations } = parkPage;
 		let gallery;
 		try {
 			gallery = await getGalleryById(galleryId);
@@ -24,9 +24,8 @@ exports = module.exports = async function (req, res, next) {
 			}
 		}
 		res.json({
-			characteristics,
-			rules,
-			groundPlanImage: groundPlanImage.secure_url,
+			intro,
+			accomodations,
 			images: gallery.images.map(image => ({
 				url: image.secure_url,
 				width: image.width,
