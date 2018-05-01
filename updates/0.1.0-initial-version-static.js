@@ -88,7 +88,7 @@ exports.create = {
 			translation_nl: 'Huisregels',
 		},
 		{
-			name: 'the_bungalow_no_images',
+			name: 'gallery_no_images',
 			translation_nl: 'Geen afbeeldingen',
 		},
 	],
