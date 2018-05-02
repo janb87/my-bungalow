@@ -10,7 +10,7 @@ const connectMongo = require('connect-mongo');
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow';
 
 keystone.init({
 	'name': 'Je suis Durbuy 84 Admin',
@@ -20,7 +20,7 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 
 	'auto update': true,
-	'admin path': 'admin',
+	// 'admin path': 'admin',
 	'session': true,
 	'session store': function (session) {
 		const MongoStore = connectMongo(session);
