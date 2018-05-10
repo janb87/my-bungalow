@@ -10,7 +10,8 @@ const connectMongo = require('connect-mongo');
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow';
+const MONGODB_URI
+	= process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow';
 
 keystone.init({
 	'name': 'Je suis Durbuy 84 Admin',
@@ -35,6 +36,17 @@ keystone.init({
 	'user model': 'User',
 
 	'mongo': MONGODB_URI,
+
+	'wysiwyg menubar': false,
+	'wysiwyg cloudinary images': true,
+	'wysiwyg additional buttons': 'forecolor backcolor, table, searchreplace',
+	// TODO: remove again
+	// https://github.com/keystonejs/keystone/issues/3529
+	'wysiwyg additional options': {
+		external_plugins: { uploadimage: '/js/uploadimage/plugin.min.js' },
+	},
+	'wysiwyg additional plugins':
+		'table, fullpage, hr, media, searchreplace, textcolor',
 });
 
 // Load your project's Models
