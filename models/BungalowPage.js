@@ -1,10 +1,5 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
-
-/**
- * BungalowPage Model
- * =============
- */
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
 
 const BungalowPage = new keystone.List('BungalowPage', {
 	nocreate: true,

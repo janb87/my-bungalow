@@ -1,11 +1,7 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
 
-/**
- * User Model
- * ==========
- */
-var User = new keystone.List('User');
+const User = new keystone.List('User');
 
 User.add({
 	name: { type: Types.Name, required: true, index: true },
@@ -20,9 +16,5 @@ User.schema.virtual('canAccessKeystone').get(function () {
 	return this.isAdmin;
 });
 
-
-/**
- * Registration
- */
 User.defaultColumns = 'name, email, isAdmin';
 User.register();

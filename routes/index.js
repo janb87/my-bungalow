@@ -33,6 +33,8 @@ exports = module.exports = function (app) {
 	app.get('/api/:lang/home-page', routes.api.homePage);
 	app.get('/api/:lang/bungalow-page', routes.api.bungalowPage);
 	app.get('/api/:lang/park-page', routes.api.parkPage);
+	app.get('/api/:lang/nearby-page', routes.api.nearbyPage);
+	app.get('/api/:lang/reservation-page', routes.api.reservationPage);
 	app.get('/api/config', routes.api.config);
 	app.get('/api/:lang/config', routes.api.config);
 	app.post('/api/contact', routes.api.contact.submitForm);

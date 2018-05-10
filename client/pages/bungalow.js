@@ -20,6 +20,14 @@ const Bungalow = ({ config, userAgent, bungalowPage }) => {
 				<section
 					dangerouslySetInnerHTML={{ __html: bungalowPage.characteristics }}
 				/>
+				{bungalowPage.groundPlanImage && (
+					<section>
+						<Gallery
+							photos={[{ src: bungalowPage.groundPlanImage }]}
+							translations={config.translations}
+						/>
+					</section>
+				)}
 				<section>
 					<Gallery photos={photos} translations={config.translations} />
 				</section>

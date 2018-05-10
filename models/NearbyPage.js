@@ -1,12 +1,12 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
-const ParkPage = new keystone.List('ParkPage', {
+const NearbyPage = new keystone.List('NearbyPage', {
 	nocreate: true,
 	nodelete: true,
 });
 
-ParkPage.add({
+NearbyPage.add({
 	name: { label: 'Naam', type: String, noedit: true, required: true },
 	language: {
 		label: 'Taal',
@@ -16,22 +16,15 @@ ParkPage.add({
 		required: true,
 	},
 	galleryId: { label: 'Album', type: Types.Relationship, ref: 'Gallery' },
-	intro: {
-		label: 'Introductie',
+	content: {
+		label: 'Tekst',
 		type: Types.Html,
 		wysiwyg: true,
-		height: 150,
-		required: true,
-	},
-	accomodations: {
-		label: 'Accomodaties',
-		type: Types.Html,
-		wysiwyg: true,
-		height: 150,
+		height: 500,
 		required: true,
 	},
 });
 
-ParkPage.defaultSort = '-name';
-ParkPage.defaultColumns = 'name, language';
-ParkPage.register();
+NearbyPage.defaultSort = '-name';
+NearbyPage.defaultColumns = 'name, language';
+NearbyPage.register();

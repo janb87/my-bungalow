@@ -1,10 +1,5 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
-
-/**
- * Contact Model
- * =============
- */
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
 
 const Contact = new keystone.List('Contact', {
 	nocreate: true,

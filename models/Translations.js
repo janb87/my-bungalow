@@ -1,10 +1,5 @@
-var keystone = require('keystone');
-var Types = keystone.Field.Types;
-
-/**
- * Translations Model
- * =============
- */
+const keystone = require('keystone');
+const Types = keystone.Field.Types;
 
 const Translations = new keystone.List('Translations', {
 	nodelete: true,

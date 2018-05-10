@@ -1,11 +1,6 @@
 const keystone = require('keystone');
 const Types = keystone.Field.Types;
 
-/**
- * Settings Model
- * =============
- */
-
 const Settings = new keystone.List('Settings', {
 	nocreate: true,
 	nodelete: true,
