@@ -25,8 +25,8 @@ const DefaultHeader = ({ lang, translations }) => {
 						margin: 0 ${spacingLg()};
 					}
 
-					nav.default-header-nav > a:not(:first-child) {
-						margin-left: 0;
+					nav.default-header-nav > a:not(:last-child) {
+						margin-right: 0;
 					}
 
 					@media (min-width: ${screenSizes.SM_MIN}) {
