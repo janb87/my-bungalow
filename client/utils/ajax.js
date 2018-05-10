@@ -1,7 +1,14 @@
 import 'isomorphic-unfetch';
 
 function getBaseUrl (req) {
-	return req ? `${req.protocol}://${req.get('Host')}` : '';
+	if (!req) {
+		return '';
+	}
+	const host = req.get('Host');
+	if (host !== 'localhost') {
+		return 'https://my-bungalow.herokuapp.com';
+	}
+	return req ? `${req.protocol}://${host}` : '';
 }
 
 function getFullUrl (baseUrl, url, query = {}) {
