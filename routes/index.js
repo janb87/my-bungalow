@@ -40,6 +40,7 @@ exports = module.exports = function (app) {
 		})
 	);
 	if (!dev) {
+		app.enable('trust proxy');
 		app.use(enforceSsl());
 	}
 
