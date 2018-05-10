@@ -1,4 +1,5 @@
 const keystone = require('keystone');
+const hsts = require('hsts');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 const next = require('next');
@@ -29,6 +30,15 @@ nextApp
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
+	// Hsts
+	app.use(
+		hsts({
+			maxAge: 31536000, // 1 year
+			includeSubDomains: true,
+			preload: true,
+		})
+	);
+
 	// Api
 	app.get('/api/:lang/home-page', routes.api.homePage);
 	app.get('/api/:lang/bungalow-page', routes.api.bungalowPage);
