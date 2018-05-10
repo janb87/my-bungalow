@@ -7,6 +7,9 @@ import { spacingMd, spacingLg, spacingXlg } from '../../../../styles/spacing';
 const DefaultHeader = ({ lang, translations }) => {
 	return (
 		<nav className="default-header-nav">
+			<Link route="contact" params={{ lang }}>
+				<a>{localize('contact_title', translations)}</a>
+			</Link>
 			<Link route="home" params={{ lang }}>
 				<a>{localize('home_title', translations)}</a>
 			</Link>
@@ -15,10 +18,15 @@ const DefaultHeader = ({ lang, translations }) => {
 					nav.default-header-nav {
 						max-width: ${screenSizes.LG_MIN};
 						margin: ${spacingMd()} auto;
+						text-align: right;
 					}
 					nav.default-header-nav > a {
 						font-size: 1em;
 						margin: 0 ${spacingLg()};
+					}
+
+					nav.default-header-nav > a:not(:first-child) {
+						margin-left: 0;
 					}
 
 					@media (min-width: ${screenSizes.SM_MIN}) {
