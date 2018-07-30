@@ -1,6 +1,6 @@
 const keystone = require('keystone');
-const hsts = require('hsts');
-const enforceSsl = require('express-enforces-ssl');
+// const hsts = require('hsts');
+// const enforceSsl = require('express-enforces-ssl');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 const next = require('next');
@@ -32,6 +32,7 @@ nextApp
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Hsts / ssl
+	/*
 	app.use(
 		hsts({
 			maxAge: 31536000, // 1 year
@@ -39,9 +40,10 @@ exports = module.exports = function (app) {
 			preload: true,
 		})
 	);
+	*/
 	if (!dev) {
 		app.enable('trust proxy');
-		app.use(enforceSsl());
+		// app.use(enforceSsl());
 	}
 
 	// Api
