@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteCond  %{REQUEST_URI} !^/.well-known/
+RewriteRule ^(.*) https://my-bungalow.herokuapp.com/$1 [P,L,QSA] 

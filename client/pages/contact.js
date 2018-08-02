@@ -7,6 +7,7 @@ import FormInputField from './components/presentation/form/formInputField';
 import Button from './components/presentation/common/button';
 import LoaderCurtain from './components/presentation/common/loaderCurtain';
 import screenSizes from '../styles/screenSizes';
+import tryParseJson from '../utils/tryParseJson';
 
 const INITIAL_STATE = {
 	errors: undefined,
@@ -99,7 +100,7 @@ const Contact = class extends React.Component {
 			.catch(error => {
 				this.setState({
 					isSubmitting: false,
-					errors: JSON.parse(error.message),
+					errors: tryParseJson(error.message),
 				});
 			});
 	}

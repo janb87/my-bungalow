@@ -9,7 +9,7 @@
     "express-enforces-ssl": "1.1.0",
     "helmet": "3.13.0",
     "isomorphic-unfetch": "2.0.0",
-    "keystone": "4.0.0-rc.1",
+    "keystone": "4.0.0",
     "lodash": "4.17.10",
     "material-ui": "0.20.1",
     "next": "6.1.1",
@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch constants --watch models --watch routes --watch updates --watch services --watch keystone.js keystone.js",
-    "build": "next build",
+    "build": "cd client && next build",
     "lint": "eslint .",
     "start": "cd client && next build && cd ../ && NODE_ENV=production node keystone.js"
   }
