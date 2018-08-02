@@ -8,6 +8,7 @@ import Button from './components/presentation/common/button';
 import LoaderCurtain from './components/presentation/common/loaderCurtain';
 import screenSizes from '../styles/screenSizes';
 import tryParseJson from '../utils/tryParseJson';
+import Alert from './components/presentation/common/alert';
 
 const INITIAL_STATE = {
 	errors: undefined,
@@ -15,6 +16,7 @@ const INITIAL_STATE = {
 	email: '',
 	message: '',
 	isSubmitting: false,
+	isSubmitted: false,
 };
 
 const Contact = class extends React.Component {
@@ -26,7 +28,8 @@ const Contact = class extends React.Component {
 
 	render () {
 		const { config, userAgent } = this.props;
-		const { name, email, message, isSubmitting, errors = {} } = this.state;
+		const { name, email, message, isSubmitting, isSubmitted, errors } = this.state;
+		const errorsObj = typeof errors === 'object' ? errors : {};
 
 		return [
 			<App key="app" config={config} userAgent={userAgent}>
@@ -34,13 +37,16 @@ const Contact = class extends React.Component {
 				<div className="contact">
 					<h1>{localize('contact_title', config.translations)}</h1>
 					<p>{localize('contact_description', config.translations)}</p>
+					<Alert show={isSubmitted && !errors}>
+						{localize('contact_success', config.translations)}
+					</Alert>
 					<FormInputField
 						name="name"
 						labelResourceId="contact_name"
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('name', newValue)}
 						value={name}
-						error={errors.name}
+						error={errorsObj.name}
 					/>
 					<FormInputField
 						name="email"
@@ -48,7 +54,8 @@ const Contact = class extends React.Component {
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('email', newValue)}
 						value={email}
-						error={errors.email}
+						error={errorsObj.email}
+						type="email"
 					/>
 					<FormInputField
 						name="message"
@@ -57,7 +64,7 @@ const Contact = class extends React.Component {
 						translations={config.translations}
 						onChange={newValue => this._onFieldChange('message', newValue)}
 						value={message}
-						error={errors.message}
+						error={errorsObj.message}
 					/>
 					{/* TODO: captcha
 					<div
@@ -92,14 +99,16 @@ const Contact = class extends React.Component {
 	}
 
 	async _submitForm () {
-		this.setState({ isSubmitting: true });
-		postJson('/api/contact', this.state)
+		const { name, email, message } = this.state;
+		this.setState({ isSubmitting: true, isSubmitted: false });
+		postJson('/api/contact', { name, email, message })
 			.then(() => {
-				this.setState({ ...INITIAL_STATE });
+				this.setState({ ...INITIAL_STATE, isSubmitted: true });
 			})
 			.catch(error => {
 				this.setState({
 					isSubmitting: false,
+					isSubmitted: true,
 					errors: tryParseJson(error.message),
 				});
 			});

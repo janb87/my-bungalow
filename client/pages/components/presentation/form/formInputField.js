@@ -12,6 +12,7 @@ const FormInputField = ({
 	error,
 	multiLine = false,
 	fullWidth = true,
+	type = 'text',
 }) => {
 	return [
 		<div key="field" className="form-field">
@@ -29,6 +30,7 @@ const FormInputField = ({
 				hintStyle={{
 					top: '36px',
 				}}
+				type={type}
 			/>
 		</div>,
 		<style key="styles" jsx="">{`
