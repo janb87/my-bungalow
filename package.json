@@ -7,7 +7,7 @@
     "connect-mongo": "2.0.1",
     "dotenv": "5.0.1",
     "express-enforces-ssl": "1.1.0",
-    "hsts": "2.1.0",
+    "helmet": "3.13.0",
     "isomorphic-unfetch": "2.0.0",
     "keystone": "4.0.0-rc.1",
     "lodash": "4.17.10",

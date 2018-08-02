@@ -13,7 +13,7 @@
 		{
 			"type": "node",
 			"request": "launch",
-			"name": "Launch Program",
+			"name": "Start dev",
 			"program": "${workspaceFolder}/keystone.js"
 		}
 	]

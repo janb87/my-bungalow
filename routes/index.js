@@ -1,11 +1,15 @@
 const keystone = require('keystone');
-// const hsts = require('hsts');
-// const enforceSsl = require('express-enforces-ssl');
+const helmet = require('helmet');
+const enforceSsl = require('express-enforces-ssl');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 const next = require('next');
 const dev = process.env.NODE_ENV !== 'production';
-const nextApp = next({ dir: 'client', dev });
+const nextApp = next({
+	dir: 'client',
+	dev,
+	conf: { poweredByHeader: false },
+});
 const clientRoutes = require('../client/routes');
 const handler = clientRoutes.getRequestHandler(nextApp);
 
@@ -19,31 +23,16 @@ const routes = {
 };
 
 let nextStarted = false;
-nextApp
-	.prepare()
-	.then(() => {
-		nextStarted = true;
-	})
-	.catch(err => {
-		console.error(err);
-		process.exit(1);
-	});
 
 // Setup Route Bindings
 exports = module.exports = function (app) {
 	// Hsts / ssl
-	/*
-	app.use(
-		hsts({
-			maxAge: 31536000, // 1 year
-			includeSubDomains: true,
-			preload: true,
-		})
-	);
-	*/
+	app.use(helmet());
+	app.disable('x-powered-by');
+
 	if (!dev) {
 		app.enable('trust proxy');
-		// app.use(enforceSsl());
+		app.use(enforceSsl());
 	}
 
 	// Api
@@ -86,4 +75,15 @@ exports = module.exports = function (app) {
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
+
+	// Start next.js
+	nextApp
+		.prepare()
+		.then(() => {
+			nextStarted = true;
+		})
+		.catch(err => {
+			console.error(err);
+			process.exit(1);
+		});
 };

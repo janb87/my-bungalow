@@ -4,11 +4,11 @@ function getBaseUrl (req) {
 	if (!req) {
 		return '';
 	}
-	const host = req.get('Host');
+	const host = req.host;
 	if (host !== 'localhost') {
 		return 'https://my-bungalow.herokuapp.com';
 	}
-	return req ? `${req.protocol}://${host}` : '';
+	return req ? `${req.protocol}://${host}:3000` : '';
 }
 
 function getFullUrl (baseUrl, url, query = {}) {
