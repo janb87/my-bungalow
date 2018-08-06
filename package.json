@@ -30,6 +30,6 @@
     "dev": "nodemon --watch constants --watch models --watch routes --watch updates --watch services --watch keystone.js keystone.js",
     "build": "cd client && next build",
     "lint": "eslint .",
-    "start": "cd client && next build && cd ../ && NODE_ENV=production node keystone.js"
+    "start": "NODE_ENV=production node keystone.js"
   }
 }
