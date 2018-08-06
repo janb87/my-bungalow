@@ -9,7 +9,7 @@ const submitForm = async (req, res, next) => {
 			html: '<p>Er is een nieuw bericht gepost op de contact pagina:</p>'
 				+ `<p><strong>Naam:</strong> ${newContact.name}</p>`
 				+ `<p><strong>Email:</strong> ${newContact.email}</p>`
-				+ `<p><strong>Bericht:</strong> ${newContact.message}</p>`,
+				+ `<p><strong>Bericht:</strong><br /><pre>${newContact.message}</pre></p>`,
 		});
 		return res.json(newContact);
 	} catch (err) {
