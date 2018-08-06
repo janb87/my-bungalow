@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { spacingMd } from '../../../../styles/spacing';
+import { spacingXlg, spacingLg } from '../../../../styles/spacing';
+import colors from '../../../../styles/colors';
 
 const Alert = ({ show, children, onDismiss, type = 'success' }) => {
 	const classes = classnames('alert', {
@@ -14,7 +15,12 @@ const Alert = ({ show, children, onDismiss, type = 'success' }) => {
 		<style key="styles" jsx="">{`
 			.alert {
 				display: none;
-				margin: ${spacingMd()} 0;
+				margin: ${spacingXlg()} 0;
+				padding: ${spacingLg()};
+
+				color: ${colors.white};
+				background-color: ${colors.success};
+				text-align: center;
 			}
 
 			.visible {

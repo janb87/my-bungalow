@@ -30,8 +30,7 @@ const Contact = class extends React.Component {
 
 	render () {
 		const { config, userAgent } = this.props;
-		const { name, email, message, isSubmitting, isSubmitted, errors } = this.state;
-		const errorsObj = typeof errors === 'object' ? errors : {};
+		const { isSubmitting, isSubmitted, errors } = this.state;
 
 		return [
 			<App key="app" config={config} userAgent={userAgent}>
@@ -42,44 +41,7 @@ const Contact = class extends React.Component {
 					<Alert show={isSubmitted && !errors}>
 						{localize('contact_success', config.translations)}
 					</Alert>
-					<form onSubmit={this._onSubmit}>
-						<FormInputField
-							name="name"
-							labelResourceId="contact_name"
-							translations={config.translations}
-							onChange={newValue => this._onFieldChange('name', newValue)}
-							value={name}
-							error={errorsObj.name}
-						/>
-						<FormInputField
-							name="email"
-							labelResourceId="contact_email"
-							translations={config.translations}
-							onChange={newValue => this._onFieldChange('email', newValue)}
-							value={email}
-							error={errorsObj.email}
-						/>
-						<FormInputField
-							name="message"
-							labelResourceId="contact_message"
-							multiLine={true}
-							translations={config.translations}
-							onChange={newValue => this._onFieldChange('message', newValue)}
-							value={message}
-							error={errorsObj.message}
-						/>
-						{/* TODO: captcha
-						<div
-							className="g-recaptcha"
-							data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
-						/>
-						*/}
-						<Button
-							labelResourceId="contact_submit"
-							translations={config.translations}
-							isSubmit={true}
-						/>
-					</form>
+					{!isSubmitted || errors ? this._renderForm() : null}
 				</div>
 			</App>,
 			<style key="styles" jsx="">{`
@@ -95,13 +57,60 @@ const Contact = class extends React.Component {
 		];
 	}
 
+	_renderForm () {
+		const { config } = this.props;
+		const { name, email, message, errors } = this.state;
+		const errorsObj = typeof errors === 'object' ? errors : {};
+
+		return (
+			<form onSubmit={this._onSubmit}>
+				<FormInputField
+					name="name"
+					labelResourceId="contact_name"
+					translations={config.translations}
+					onChange={newValue => this._onFieldChange('name', newValue)}
+					value={name}
+					error={errorsObj.name}
+				/>
+				<FormInputField
+					name="email"
+					labelResourceId="contact_email"
+					translations={config.translations}
+					onChange={newValue => this._onFieldChange('email', newValue)}
+					value={email}
+					error={errorsObj.email}
+				/>
+				<FormInputField
+					name="message"
+					labelResourceId="contact_message"
+					multiLine={true}
+					translations={config.translations}
+					onChange={newValue => this._onFieldChange('message', newValue)}
+					value={message}
+					error={errorsObj.message}
+				/>
+				{/* TODO: captcha
+				<div
+					className="g-recaptcha"
+					data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
+				/>
+				*/}
+				<Button
+					labelResourceId="contact_submit"
+					translations={config.translations}
+					isSubmit={true}
+				/>
+			</form>
+		);
+	}
+
 	_onFieldChange (fieldName, newValue) {
 		this.setState({
 			[fieldName]: newValue,
 		});
 	}
 
-	_onSubmit(e) {
+	_onSubmit (e) {
 		e.preventDefault();
 		this._submitForm();
 	}
