@@ -2,6 +2,7 @@ import React from 'react';
 import localize from '../../../../utils/localize';
 import { spacingMd } from '../../../../styles/spacing';
 import TextField from 'material-ui/TextField';
+import localizeError from '../../../../utils/localizeError';
 
 const FormInputField = ({
 	name,
@@ -13,6 +14,7 @@ const FormInputField = ({
 	multiLine = false,
 	fullWidth = true,
 	type = 'text',
+	required = false,
 }) => {
 	return [
 		<div key="field" className="form-field">
@@ -25,12 +27,13 @@ const FormInputField = ({
 				rows={multiLine ? 5 : undefined}
 				onChange={(e, value) => onChange(value)}
 				value={value}
-				errorText={error && error.message}
+				errorText={localizeError(error, translations)}
 				fullWidth={fullWidth}
 				hintStyle={{
 					top: '36px',
 				}}
 				type={type}
+				required={required}
 			/>
 		</div>,
 		<style key="styles" jsx="">{`

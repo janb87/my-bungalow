@@ -24,6 +24,8 @@ const Contact = class extends React.Component {
 		super(props);
 
 		this.state = INITIAL_STATE;
+
+		this._onSubmit = this._onSubmit.bind(this);
 	}
 
 	render () {
@@ -40,43 +42,44 @@ const Contact = class extends React.Component {
 					<Alert show={isSubmitted && !errors}>
 						{localize('contact_success', config.translations)}
 					</Alert>
-					<FormInputField
-						name="name"
-						labelResourceId="contact_name"
-						translations={config.translations}
-						onChange={newValue => this._onFieldChange('name', newValue)}
-						value={name}
-						error={errorsObj.name}
-					/>
-					<FormInputField
-						name="email"
-						labelResourceId="contact_email"
-						translations={config.translations}
-						onChange={newValue => this._onFieldChange('email', newValue)}
-						value={email}
-						error={errorsObj.email}
-						type="email"
-					/>
-					<FormInputField
-						name="message"
-						labelResourceId="contact_message"
-						multiLine={true}
-						translations={config.translations}
-						onChange={newValue => this._onFieldChange('message', newValue)}
-						value={message}
-						error={errorsObj.message}
-					/>
-					{/* TODO: captcha
-					<div
-						className="g-recaptcha"
-						data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
-					/>
-					*/}
-					<Button
-						labelResourceId="contact_submit"
-						translations={config.translations}
-						onClick={() => this._submitForm()}
-					/>
+					<form onSubmit={this._onSubmit}>
+						<FormInputField
+							name="name"
+							labelResourceId="contact_name"
+							translations={config.translations}
+							onChange={newValue => this._onFieldChange('name', newValue)}
+							value={name}
+							error={errorsObj.name}
+						/>
+						<FormInputField
+							name="email"
+							labelResourceId="contact_email"
+							translations={config.translations}
+							onChange={newValue => this._onFieldChange('email', newValue)}
+							value={email}
+							error={errorsObj.email}
+						/>
+						<FormInputField
+							name="message"
+							labelResourceId="contact_message"
+							multiLine={true}
+							translations={config.translations}
+							onChange={newValue => this._onFieldChange('message', newValue)}
+							value={message}
+							error={errorsObj.message}
+						/>
+						{/* TODO: captcha
+						<div
+							className="g-recaptcha"
+							data-sitekey="6LdTZkoUAAAAAH6WF4Tme49Lvp0l8LDD6sx5E9m7"
+						/>
+						*/}
+						<Button
+							labelResourceId="contact_submit"
+							translations={config.translations}
+							isSubmit={true}
+						/>
+					</form>
 				</div>
 			</App>,
 			<style key="styles" jsx="">{`
@@ -96,6 +99,11 @@ const Contact = class extends React.Component {
 		this.setState({
 			[fieldName]: newValue,
 		});
+	}
+
+	_onSubmit(e) {
+		e.preventDefault();
+		this._submitForm();
 	}
 
 	async _submitForm () {

@@ -3,7 +3,7 @@ const Types = keystone.Field.Types;
 
 const Contact = new keystone.List('Contact', {
 	nocreate: true,
-	nodelete: true,
+	nodelete: false,
 	noedit: true,
 });
 

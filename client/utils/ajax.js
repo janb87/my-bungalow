@@ -4,7 +4,7 @@ function getBaseUrl (req) {
 	if (!req) {
 		return '';
 	}
-	const host = req.host;
+	const host = req.hostname;
 	if (host !== 'localhost') {
 		return 'https://my-bungalow.herokuapp.com';
 	}
