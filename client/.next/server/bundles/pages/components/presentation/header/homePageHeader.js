@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -135,7 +135,22 @@ var colorPalete = {
 
 /***/ }),
 
-/***/ 29:
+/***/ 3:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var sizes = {
+  XS_MIN: '480px',
+  SM_MIN: '768px',
+  MD_MIN: '992px',
+  LG_MIN: '1200px',
+  XL_MIN: '1400px'
+};
+/* harmony default export */ __webpack_exports__["a"] = (sizes);
+
+/***/ }),
+
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -184,21 +199,6 @@ var HomePageHeader = function HomePageHeader(_ref) {
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var sizes = {
-  XS_MIN: '480px',
-  SM_MIN: '768px',
-  MD_MIN: '992px',
-  LG_MIN: '1200px',
-  XL_MIN: '1400px'
-};
-/* harmony default export */ __webpack_exports__["a"] = (sizes);
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, exports) {
 
@@ -206,10 +206,10 @@ module.exports = require("styled-jsx/style");
 
 /***/ }),
 
-/***/ 42:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(29);
+module.exports = __webpack_require__(31);
 
 
 /***/ }),

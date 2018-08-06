@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 35);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -92,14 +92,14 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 24:
+/***/ 26:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_localize__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_localize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__utils_localize__);
@@ -112,14 +112,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var Button = function Button(_ref) {
   var labelResourceId = _ref.labelResourceId,
       translations = _ref.translations,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      _ref$isSubmit = _ref.isSubmit,
+      isSubmit = _ref$isSubmit === void 0 ? false : _ref$isSubmit;
   return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     key: "button",
     className: "button"
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton___default.a, {
     label: __WEBPACK_IMPORTED_MODULE_2__utils_localize___default()(labelResourceId, translations),
     secondary: true,
-    onClick: onClick
+    onClick: onClick,
+    type: isSubmit ? 'submit' : 'button'
   })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("style", {
     key: "styles",
     jsx: ""
@@ -130,17 +133,17 @@ var Button = function Button(_ref) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 27:
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
 
-/***/ 35:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24);
+module.exports = __webpack_require__(26);
 
 
 /***/ }),

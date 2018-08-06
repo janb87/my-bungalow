@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 42);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -92,24 +92,54 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_localize__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_localize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__utils_localize__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_spacing__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_TextField__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_TextField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_TextField__);
+
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
+
+// EXTERNAL MODULE: ./utils/localize.js
+var localize = __webpack_require__(1);
+var localize_default = /*#__PURE__*/__webpack_require__.n(localize);
+
+// EXTERNAL MODULE: ./styles/spacing.js
+var spacing = __webpack_require__(5);
+
+// EXTERNAL MODULE: external "material-ui/TextField"
+var TextField_ = __webpack_require__(30);
+var TextField__default = /*#__PURE__*/__webpack_require__.n(TextField_);
+
+// CONCATENATED MODULE: ./utils/localizeError.js
+
+function localizeError(error) {
+  var translations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+  if (!error) {
+    return null;
+  }
+
+  if (error.kind === 'required') {
+    return localize_default()('error_required', translations);
+  }
+
+  if (error.kind === 'invalid-email') {
+    return localize_default()('error_invalid_email', translations);
+  }
+
+  return error.message;
+}
+// CONCATENATED MODULE: ./pages/components/presentation/form/formInputField.js
 
 
 
 
 
-var FormInputField = function FormInputField(_ref) {
+
+var formInputField_FormInputField = function FormInputField(_ref) {
   var name = _ref.name,
       labelResourceId = _ref.labelResourceId,
       translations = _ref.translations,
@@ -119,14 +149,18 @@ var FormInputField = function FormInputField(_ref) {
       _ref$multiLine = _ref.multiLine,
       multiLine = _ref$multiLine === void 0 ? false : _ref$multiLine,
       _ref$fullWidth = _ref.fullWidth,
-      fullWidth = _ref$fullWidth === void 0 ? true : _ref$fullWidth;
-  return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      fullWidth = _ref$fullWidth === void 0 ? true : _ref$fullWidth,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'text' : _ref$type,
+      _ref$required = _ref.required,
+      required = _ref$required === void 0 ? false : _ref$required;
+  return [external__react__default.a.createElement("div", {
     key: "field",
     className: "form-field"
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_TextField___default.a, {
+  }, external__react__default.a.createElement(TextField__default.a, {
     name: name,
-    hintText: __WEBPACK_IMPORTED_MODULE_1__utils_localize___default()(labelResourceId, translations),
-    floatingLabelText: __WEBPACK_IMPORTED_MODULE_1__utils_localize___default()(labelResourceId, translations),
+    hintText: localize_default()(labelResourceId, translations),
+    floatingLabelText: localize_default()(labelResourceId, translations),
     floatingLabelFixed: false,
     multiLine: multiLine,
     rows: multiLine ? 5 : undefined,
@@ -134,32 +168,34 @@ var FormInputField = function FormInputField(_ref) {
       return _onChange(value);
     },
     value: value,
-    errorText: error && error.message,
+    errorText: localizeError(error, translations),
     fullWidth: fullWidth,
     hintStyle: {
       top: '36px'
-    }
-  })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("style", {
+    },
+    type: type,
+    required: required
+  })), external__react__default.a.createElement("style", {
     key: "styles",
     jsx: ""
-  }, "\n\t\t\t.form-field {\n\t\t\t\tmin-width: 300px;\n\t\t\t\tmargin: 0 0 ".concat(Object(__WEBPACK_IMPORTED_MODULE_2__styles_spacing__["b" /* spacingMd */])(), " 0;\n\t\t\t}\n\t\t"))];
+  }, "\n\t\t\t.form-field {\n\t\t\t\tmin-width: 300px;\n\t\t\t\tmargin: 0 0 ".concat(Object(spacing["b" /* spacingMd */])(), " 0;\n\t\t\t}\n\t\t"))];
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (FormInputField);
+/* harmony default export */ var formInputField = __webpack_exports__["default"] = (formInputField_FormInputField);
 
 /***/ }),
 
-/***/ 28:
+/***/ 30:
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/TextField");
 
 /***/ }),
 
-/***/ 39:
+/***/ 42:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27);
+module.exports = __webpack_require__(29);
 
 
 /***/ }),

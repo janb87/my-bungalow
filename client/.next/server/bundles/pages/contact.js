@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -536,7 +536,7 @@ function getBaseUrl(req) {
     return '';
   }
 
-  var host = req.host;
+  var host = req.hostname;
 
   if (host !== 'localhost') {
     return 'https://my-bungalow.herokuapp.com';
@@ -666,7 +666,51 @@ module.exports = require("material-ui/CircularProgress");
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_spacing__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_colors__ = __webpack_require__(2);
+
+
+
+
+
+var Alert = function Alert(_ref) {
+  var show = _ref.show,
+      children = _ref.children,
+      onDismiss = _ref.onDismiss,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'success' : _ref$type;
+  var classes = __WEBPACK_IMPORTED_MODULE_1_classnames___default()('alert', {
+    visible: show,
+    warning: type === 'warning'
+  });
+  return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    key: "alert",
+    className: classes
+  }, children), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("style", {
+    key: "styles",
+    jsx: ""
+  }, "\n\t\t\t.alert {\n\t\t\t\tdisplay: none;\n\t\t\t\tmargin: ".concat(Object(__WEBPACK_IMPORTED_MODULE_2__styles_spacing__["c" /* spacingXlg */])(), " 0;\n\t\t\t\tpadding: ").concat(Object(__WEBPACK_IMPORTED_MODULE_2__styles_spacing__["a" /* spacingLg */])(), ";\n\n\t\t\t\tcolor: ").concat(__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].white, ";\n\t\t\t\tbackground-color: ").concat(__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].success, ";\n\t\t\t\ttext-align: center;\n\t\t\t}\n\n\t\t\t.visible {\n\t\t\t\tdisplay: block;\n\t\t\t}\n\t\t"))];
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Alert);
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+module.exports = require("classnames");
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_localize__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_localize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__utils_localize__);
@@ -679,14 +723,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var Button = function Button(_ref) {
   var labelResourceId = _ref.labelResourceId,
       translations = _ref.translations,
-      onClick = _ref.onClick;
+      onClick = _ref.onClick,
+      _ref$isSubmit = _ref.isSubmit,
+      isSubmit = _ref$isSubmit === void 0 ? false : _ref$isSubmit;
   return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     key: "button",
     className: "button"
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_material_ui_RaisedButton___default.a, {
     label: __WEBPACK_IMPORTED_MODULE_2__utils_localize___default()(labelResourceId, translations),
     secondary: true,
-    onClick: onClick
+    onClick: onClick,
+    type: isSubmit ? 'submit' : 'button'
   })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("style", {
     key: "styles",
     jsx: ""
@@ -696,13 +743,13 @@ var Button = function Button(_ref) {
 /* harmony default export */ __webpack_exports__["default"] = (Button);
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/RaisedButton");
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -728,37 +775,67 @@ function LoaderCurtain(_ref) {
   }
 
   return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-    className: __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a.dynamic([["67366497", [__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark]]]) + " " + "loader-curtain"
+    className: __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a.dynamic([["2537079074", [__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark]]]) + " " + "loader-curtain"
   }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
-    className: __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a.dynamic([["67366497", [__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark]]]) + " " + "loader-content"
+    className: __WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a.dynamic([["2537079074", [__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark]]]) + " " + "loader-content"
   }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__loader__["default"], {
     show: true
   })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0_styled_jsx_style___default.a, {
-    styleId: "67366497",
-    css: [".loader-curtain.__jsx-style-dynamic-selector{position:absolute;top:0;left:0;bottom:0;right:0;opacity:0.5;z-index:999;background-color:".concat(__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark, ";}"), ".loader-content.__jsx-style-dynamic-selector{height:100vh;width:100px;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;opacity:1;}"],
+    styleId: "2537079074",
+    css: [".loader-curtain.__jsx-style-dynamic-selector{position:fixed;top:0;left:0;bottom:0;right:0;opacity:0.5;z-index:999;background-color:".concat(__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark, ";}"), ".loader-content.__jsx-style-dynamic-selector{height:100vh;width:100px;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;opacity:1;}"],
     dynamic: [__WEBPACK_IMPORTED_MODULE_3__styles_colors__["a" /* default */].gray_dark]
   }));
 }
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_localize__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_localize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__utils_localize__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_spacing__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_TextField__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_material_ui_TextField___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_material_ui_TextField__);
+
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
+
+// EXTERNAL MODULE: ./utils/localize.js
+var localize = __webpack_require__(1);
+var localize_default = /*#__PURE__*/__webpack_require__.n(localize);
+
+// EXTERNAL MODULE: ./styles/spacing.js
+var spacing = __webpack_require__(5);
+
+// EXTERNAL MODULE: external "material-ui/TextField"
+var TextField_ = __webpack_require__(30);
+var TextField__default = /*#__PURE__*/__webpack_require__.n(TextField_);
+
+// CONCATENATED MODULE: ./utils/localizeError.js
+
+function localizeError(error) {
+  var translations = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+
+  if (!error) {
+    return null;
+  }
+
+  if (error.kind === 'required') {
+    return localize_default()('error_required', translations);
+  }
+
+  if (error.kind === 'invalid-email') {
+    return localize_default()('error_invalid_email', translations);
+  }
+
+  return error.message;
+}
+// CONCATENATED MODULE: ./pages/components/presentation/form/formInputField.js
 
 
 
 
 
-var FormInputField = function FormInputField(_ref) {
+
+var formInputField_FormInputField = function FormInputField(_ref) {
   var name = _ref.name,
       labelResourceId = _ref.labelResourceId,
       translations = _ref.translations,
@@ -768,14 +845,18 @@ var FormInputField = function FormInputField(_ref) {
       _ref$multiLine = _ref.multiLine,
       multiLine = _ref$multiLine === void 0 ? false : _ref$multiLine,
       _ref$fullWidth = _ref.fullWidth,
-      fullWidth = _ref$fullWidth === void 0 ? true : _ref$fullWidth;
-  return [__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      fullWidth = _ref$fullWidth === void 0 ? true : _ref$fullWidth,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'text' : _ref$type,
+      _ref$required = _ref.required,
+      required = _ref$required === void 0 ? false : _ref$required;
+  return [external__react__default.a.createElement("div", {
     key: "field",
     className: "form-field"
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_material_ui_TextField___default.a, {
+  }, external__react__default.a.createElement(TextField__default.a, {
     name: name,
-    hintText: __WEBPACK_IMPORTED_MODULE_1__utils_localize___default()(labelResourceId, translations),
-    floatingLabelText: __WEBPACK_IMPORTED_MODULE_1__utils_localize___default()(labelResourceId, translations),
+    hintText: localize_default()(labelResourceId, translations),
+    floatingLabelText: localize_default()(labelResourceId, translations),
     floatingLabelFixed: false,
     multiLine: multiLine,
     rows: multiLine ? 5 : undefined,
@@ -783,28 +864,28 @@ var FormInputField = function FormInputField(_ref) {
       return _onChange(value);
     },
     value: value,
-    errorText: error && error.message,
+    errorText: localizeError(error, translations),
     fullWidth: fullWidth,
     hintStyle: {
       top: '36px'
-    }
-  })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("style", {
+    },
+    type: type,
+    required: required
+  })), external__react__default.a.createElement("style", {
     key: "styles",
     jsx: ""
-  }, "\n\t\t\t.form-field {\n\t\t\t\tmin-width: 300px;\n\t\t\t\tmargin: 0 0 ".concat(Object(__WEBPACK_IMPORTED_MODULE_2__styles_spacing__["b" /* spacingMd */])(), " 0;\n\t\t\t}\n\t\t"))];
+  }, "\n\t\t\t.form-field {\n\t\t\t\tmin-width: 300px;\n\t\t\t\tmargin: 0 0 ".concat(Object(spacing["b" /* spacingMd */])(), " 0;\n\t\t\t}\n\t\t"))];
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (FormInputField);
+/* harmony default export */ var formInputField = __webpack_exports__["default"] = (formInputField_FormInputField);
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("material-ui/TextField");
 
 /***/ }),
-/* 29 */,
-/* 30 */,
 /* 31 */,
 /* 32 */,
 /* 33 */,
@@ -817,14 +898,17 @@ module.exports = require("material-ui/TextField");
 /* 40 */,
 /* 41 */,
 /* 42 */,
-/* 43 */
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(44);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -851,14 +935,14 @@ var localize_default = /*#__PURE__*/__webpack_require__.n(localize);
 // EXTERNAL MODULE: ./styles/spacing.js
 var spacing = __webpack_require__(5);
 
-// EXTERNAL MODULE: ./pages/components/presentation/form/formInputField.js
-var formInputField = __webpack_require__(27);
+// EXTERNAL MODULE: ./pages/components/presentation/form/formInputField.js + 1 modules
+var formInputField = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./pages/components/presentation/common/button.js
-var common_button = __webpack_require__(24);
+var common_button = __webpack_require__(26);
 
 // EXTERNAL MODULE: ./pages/components/presentation/common/loaderCurtain.js
-var loaderCurtain = __webpack_require__(26);
+var loaderCurtain = __webpack_require__(28);
 
 // EXTERNAL MODULE: ./styles/screenSizes.js
 var screenSizes = __webpack_require__(3);
@@ -871,16 +955,19 @@ function tryParseJson(value) {
     return value;
   }
 }
+// EXTERNAL MODULE: ./pages/components/presentation/common/alert.js
+var common_alert = __webpack_require__(24);
+
 // CONCATENATED MODULE: ./pages/contact.js
 
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -890,9 +977,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
@@ -909,7 +997,8 @@ var INITIAL_STATE = {
   name: '',
   email: '',
   message: '',
-  isSubmitting: false
+  isSubmitting: false,
+  isSubmitted: false
 };
 
 var contact_Contact =
@@ -924,24 +1013,20 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (Contact.__proto__ || Object.getPrototypeOf(Contact)).call(this, props));
     _this.state = INITIAL_STATE;
+    _this._onSubmit = _this._onSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Contact, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           config = _props.config,
           userAgent = _props.userAgent;
       var _state = this.state,
-          name = _state.name,
-          email = _state.email,
-          message = _state.message,
           isSubmitting = _state.isSubmitting,
-          _state$errors = _state.errors,
-          errors = _state$errors === void 0 ? {} : _state$errors;
+          isSubmitted = _state.isSubmitted,
+          errors = _state.errors;
       return [external__react__default.a.createElement(app["default"], {
         key: "app",
         config: config,
@@ -950,7 +1035,28 @@ function (_React$Component) {
         show: isSubmitting
       }), external__react__default.a.createElement("div", {
         className: "contact"
-      }, external__react__default.a.createElement("h1", null, localize_default()('contact_title', config.translations)), external__react__default.a.createElement("p", null, localize_default()('contact_description', config.translations)), external__react__default.a.createElement(formInputField["default"], {
+      }, external__react__default.a.createElement("h1", null, localize_default()('contact_title', config.translations)), external__react__default.a.createElement("p", null, localize_default()('contact_description', config.translations)), external__react__default.a.createElement(common_alert["default"], {
+        show: isSubmitted && !errors
+      }, localize_default()('contact_success', config.translations)), !isSubmitted || errors ? this._renderForm() : null)), external__react__default.a.createElement("style", {
+        key: "styles",
+        jsx: ""
+      }, "\n\t\t\t\t.contact {\n\t\t\t\t\tmargin: ".concat(Object(spacing["a" /* spacingLg */])(), ";\n\t\t\t\t}\n\t\t\t\t@media (min-width: ").concat(screenSizes["a" /* default */].SM_MIN, ") {\n\t\t\t\t\t.contact {\n\t\t\t\t\t\tmargin: ").concat(Object(spacing["c" /* spacingXlg */])(), ";\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t"))];
+    }
+  }, {
+    key: "_renderForm",
+    value: function _renderForm() {
+      var _this2 = this;
+
+      var config = this.props.config;
+      var _state2 = this.state,
+          name = _state2.name,
+          email = _state2.email,
+          message = _state2.message,
+          errors = _state2.errors;
+      var errorsObj = _typeof(errors) === 'object' ? errors : {};
+      return external__react__default.a.createElement("form", {
+        onSubmit: this._onSubmit
+      }, external__react__default.a.createElement(formInputField["default"], {
         name: "name",
         labelResourceId: "contact_name",
         translations: config.translations,
@@ -958,7 +1064,7 @@ function (_React$Component) {
           return _this2._onFieldChange('name', newValue);
         },
         value: name,
-        error: errors.name
+        error: errorsObj.name
       }), external__react__default.a.createElement(formInputField["default"], {
         name: "email",
         labelResourceId: "contact_email",
@@ -967,7 +1073,7 @@ function (_React$Component) {
           return _this2._onFieldChange('email', newValue);
         },
         value: email,
-        error: errors.email
+        error: errorsObj.email
       }), external__react__default.a.createElement(formInputField["default"], {
         name: "message",
         labelResourceId: "contact_message",
@@ -977,22 +1083,24 @@ function (_React$Component) {
           return _this2._onFieldChange('message', newValue);
         },
         value: message,
-        error: errors.message
+        error: errorsObj.message
       }), external__react__default.a.createElement(common_button["default"], {
         labelResourceId: "contact_submit",
         translations: config.translations,
-        onClick: function onClick() {
-          return _this2._submitForm();
-        }
-      }))), external__react__default.a.createElement("style", {
-        key: "styles",
-        jsx: ""
-      }, "\n\t\t\t\t.contact {\n\t\t\t\t\tmargin: ".concat(Object(spacing["a" /* spacingLg */])(), ";\n\t\t\t\t}\n\t\t\t\t@media (min-width: ").concat(screenSizes["a" /* default */].SM_MIN, ") {\n\t\t\t\t\t.contact {\n\t\t\t\t\t\tmargin: ").concat(Object(spacing["c" /* spacingXlg */])(), ";\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t"))];
+        isSubmit: true
+      }));
     }
   }, {
     key: "_onFieldChange",
     value: function _onFieldChange(fieldName, newValue) {
       this.setState(_defineProperty({}, fieldName, newValue));
+    }
+  }, {
+    key: "_onSubmit",
+    value: function _onSubmit(e) {
+      e.preventDefault();
+
+      this._submitForm();
     }
   }, {
     key: "_submitForm",
@@ -1002,23 +1110,34 @@ function (_React$Component) {
       regenerator__default.a.mark(function _callee() {
         var _this3 = this;
 
+        var _state3, name, email, message;
+
         return regenerator__default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                _state3 = this.state, name = _state3.name, email = _state3.email, message = _state3.message;
                 this.setState({
-                  isSubmitting: true
+                  isSubmitting: true,
+                  isSubmitted: false
                 });
-                Object(ajax["b" /* postJson */])('/api/contact', this.state).then(function () {
-                  _this3.setState(_objectSpread({}, INITIAL_STATE));
+                Object(ajax["b" /* postJson */])('/api/contact', {
+                  name: name,
+                  email: email,
+                  message: message
+                }).then(function () {
+                  _this3.setState(_objectSpread({}, INITIAL_STATE, {
+                    isSubmitted: true
+                  }));
                 }).catch(function (error) {
                   _this3.setState({
                     isSubmitting: false,
+                    isSubmitted: true,
                     errors: tryParseJson(error.message)
                   });
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
