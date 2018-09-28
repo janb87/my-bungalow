@@ -4,27 +4,12 @@ const enforceSsl = require('express-enforces-ssl');
 const middleware = require('./middleware');
 const importRoutes = keystone.importer(__dirname);
 const next = require('next');
+const nextConfig = require('../client/next.config');
 const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({
 	dir: 'client',
 	dev,
-	conf: {
-		poweredByHeader: false,
-		webpack: function (cfg) {
-			const originalEntry = cfg.entry;
-			cfg.entry = async () => {
-				const entries = await originalEntry();
-
-				if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
-					entries['main.js'].unshift('../client/polyfills.js');
-				}
-
-				return entries;
-			};
-
-			return cfg;
-		},
-	},
+	conf: nextConfig,
 });
 const clientRoutes = require('../client/routes');
 const handler = clientRoutes.getRequestHandler(nextApp);

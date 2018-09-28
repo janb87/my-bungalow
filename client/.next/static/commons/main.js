@@ -35470,8 +35470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
-console.log('Loading polyfills'); // Add your polyfills
+ // Add your polyfills
 
 String.prototype.includes = __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes___default.a;
 String.prototype.repeat = __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat___default.a;
@@ -35480,11 +35479,9 @@ Object.assign = __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___d
 
 /***/ }),
 
-/***/ 7:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
@@ -35495,5 +35492,5 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 
 /***/ })
 
-},[7]);
+},[5]);
 //# sourceMappingURL=main.js.map
