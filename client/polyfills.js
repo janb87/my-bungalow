@@ -6,7 +6,7 @@ import find from 'core-js/library/fn/array/virtual/find';
 import assign from 'core-js/library/fn/object/assign';
 
 // Add your polyfills
-String.prototype.includes = includes;
-String.prototype.repeat = repeat;
-Array.prototype.find = find;
-Object.prototype.assing = assign;
+String.prototype.includes = String.prototype.includes || includes;
+String.prototype.repeat = String.prototype.repeat || repeat;
+Array.prototype.find = Array.prototype.find || find;
+Object.assign = Object.assign || assign;
