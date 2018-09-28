@@ -1,12 +1,11 @@
 webpackHotUpdate(0,{
 
-/***/ 10:
+/***/ 5:
+false,
+
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
@@ -16,10 +15,7 @@ __webpack_require__("../node_modules/next/dist/client/on-demand-entries-client.j
 module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.js");
 
 
-/***/ }),
-
-/***/ 9:
-false
+/***/ })
 
 })
-//# sourceMappingURL=0.865f8876bf53b268ff57.hot-update.js.map
+//# sourceMappingURL=0.b447f93b7656f58e1fba.hot-update.js.map

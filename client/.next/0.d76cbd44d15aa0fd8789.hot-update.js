@@ -1,14 +1,12 @@
-webpackHotUpdate(0,{
-
-/***/ 6:
+webpackHotUpdate(0,[
+/* 0 */
 false,
-
-/***/ 7:
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("../node_modules/next/dist/client/webpack-hot-middleware-client.js");
@@ -17,6 +15,5 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 
 
 /***/ })
-
-})
-//# sourceMappingURL=0.81ee6c5937e2b9b7bc89.hot-update.js.map
+])
+//# sourceMappingURL=0.d76cbd44d15aa0fd8789.hot-update.js.map

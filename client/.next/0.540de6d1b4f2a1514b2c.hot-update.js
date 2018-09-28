@@ -1,14 +1,11 @@
 webpackHotUpdate(0,{
 
-/***/ 7:
+/***/ 4:
 false,
 
-/***/ 8:
+/***/ 5:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
@@ -20,4 +17,4 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 /***/ })
 
 })
-//# sourceMappingURL=0.601e2c68b4a0447c7dcb.hot-update.js.map
+//# sourceMappingURL=0.540de6d1b4f2a1514b2c.hot-update.js.map

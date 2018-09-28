@@ -35470,32 +35470,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
- // Add your polyfills
 
-String.prototype.includes = String.prototype.includes || __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes___default.a;
-String.prototype.repeat = String.prototype.repeat || __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat___default.a;
-Array.prototype.find = Array.prototype.find || __WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find___default.a;
-Object.assign = Object.assign || __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___default.a;
+console.log('Loading polyfills'); // Add your polyfills
+
+String.prototype.includes = __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes___default.a;
+String.prototype.repeat = __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat___default.a;
+Array.prototype.find = __WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find___default.a;
+Object.assign = __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___default.a;
 
 /***/ }),
 
-/***/ 21:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
-__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
@@ -35508,5 +35495,5 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 
 /***/ })
 
-},[21]);
+},[7]);
 //# sourceMappingURL=main.js.map
