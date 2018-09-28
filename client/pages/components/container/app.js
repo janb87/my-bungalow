@@ -70,6 +70,7 @@ const App = ({
 				</main>
 				<style jsx="">{`
 					main {
+						display: block;
 						${stickMenuToBottom && `height: 100vh;`}
 						${backgroundImage
 							&& `background-image: url(${backgroundImage});`} background-repeat: no-repeat;

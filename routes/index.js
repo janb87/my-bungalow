@@ -8,7 +8,23 @@ const dev = process.env.NODE_ENV !== 'production';
 const nextApp = next({
 	dir: 'client',
 	dev,
-	conf: { poweredByHeader: false },
+	conf: {
+		poweredByHeader: false,
+		webpack: function (cfg) {
+			const originalEntry = cfg.entry;
+			cfg.entry = async () => {
+				const entries = await originalEntry();
+
+				if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+					entries['main.js'].unshift('../client/polyfills.js');
+				}
+
+				return entries;
+			};
+
+			return cfg;
+		},
+	},
 });
 const clientRoutes = require('../client/routes');
 const handler = clientRoutes.getRequestHandler(nextApp);
