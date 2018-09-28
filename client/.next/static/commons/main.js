@@ -207,6 +207,15 @@ module.exports = __webpack_require__("../node_modules/core-js/library/modules/_c
 
 /***/ }),
 
+/***/ "../node_modules/core-js/library/fn/array/virtual/find.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("../node_modules/core-js/library/modules/es6.array.find.js");
+module.exports = __webpack_require__("../node_modules/core-js/library/modules/_entry-virtual.js")('Array').find;
+
+
+/***/ }),
+
 /***/ "../node_modules/core-js/library/fn/get-iterator.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -333,6 +342,24 @@ __webpack_require__("../node_modules/core-js/library/modules/es7.set.to-json.js"
 __webpack_require__("../node_modules/core-js/library/modules/es7.set.of.js");
 __webpack_require__("../node_modules/core-js/library/modules/es7.set.from.js");
 module.exports = __webpack_require__("../node_modules/core-js/library/modules/_core.js").Set;
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/fn/string/virtual/includes.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("../node_modules/core-js/library/modules/es6.string.includes.js");
+module.exports = __webpack_require__("../node_modules/core-js/library/modules/_entry-virtual.js")('String').includes;
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/fn/string/virtual/repeat.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__("../node_modules/core-js/library/modules/es6.string.repeat.js");
+module.exports = __webpack_require__("../node_modules/core-js/library/modules/_entry-virtual.js")('String').repeat;
 
 
 /***/ }),
@@ -899,6 +926,18 @@ module.exports = function (it) {
 
 /***/ }),
 
+/***/ "../node_modules/core-js/library/modules/_entry-virtual.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__("../node_modules/core-js/library/modules/_core.js");
+module.exports = function (CONSTRUCTOR) {
+  var C = core[CONSTRUCTOR];
+  return (C.virtual || C.prototype);
+};
+
+
+/***/ }),
+
 /***/ "../node_modules/core-js/library/modules/_enum-bug-keys.js":
 /***/ (function(module, exports) {
 
@@ -996,6 +1035,25 @@ $export.W = 32;  // wrap
 $export.U = 64;  // safe
 $export.R = 128; // real proto method for `library`
 module.exports = $export;
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/modules/_fails-is-regexp.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var MATCH = __webpack_require__("../node_modules/core-js/library/modules/_wks.js")('match');
+module.exports = function (KEY) {
+  var re = /./;
+  try {
+    '/./'[KEY](re);
+  } catch (e) {
+    try {
+      re[MATCH] = false;
+      return !'/./'[KEY](re);
+    } catch (f) { /* empty */ }
+  } return true;
+};
 
 
 /***/ }),
@@ -1172,6 +1230,21 @@ module.exports = Array.isArray || function isArray(arg) {
 
 module.exports = function (it) {
   return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/modules/_is-regexp.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.2.8 IsRegExp(argument)
+var isObject = __webpack_require__("../node_modules/core-js/library/modules/_is-object.js");
+var cof = __webpack_require__("../node_modules/core-js/library/modules/_cof.js");
+var MATCH = __webpack_require__("../node_modules/core-js/library/modules/_wks.js")('match');
+module.exports = function (it) {
+  var isRegExp;
+  return isObject(it) && ((isRegExp = it[MATCH]) !== undefined ? !!isRegExp : cof(it) == 'RegExp');
 };
 
 
@@ -2057,6 +2130,41 @@ module.exports = function (TO_STRING) {
 
 /***/ }),
 
+/***/ "../node_modules/core-js/library/modules/_string-context.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+// helper for String#{startsWith, endsWith, includes}
+var isRegExp = __webpack_require__("../node_modules/core-js/library/modules/_is-regexp.js");
+var defined = __webpack_require__("../node_modules/core-js/library/modules/_defined.js");
+
+module.exports = function (that, searchString, NAME) {
+  if (isRegExp(searchString)) throw TypeError('String#' + NAME + " doesn't accept regex!");
+  return String(defined(that));
+};
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/modules/_string-repeat.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var toInteger = __webpack_require__("../node_modules/core-js/library/modules/_to-integer.js");
+var defined = __webpack_require__("../node_modules/core-js/library/modules/_defined.js");
+
+module.exports = function repeat(count) {
+  var str = String(defined(this));
+  var res = '';
+  var n = toInteger(count);
+  if (n < 0 || n == Infinity) throw RangeError("Count can't be negative");
+  for (;n > 0; (n >>>= 1) && (str += str)) if (n & 1) res += str;
+  return res;
+};
+
+
+/***/ }),
+
 /***/ "../node_modules/core-js/library/modules/_task.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2340,6 +2448,28 @@ module.exports = __webpack_require__("../node_modules/core-js/library/modules/_c
     // eslint-disable-next-line no-prototype-builtins
     || Iterators.hasOwnProperty(classof(O));
 };
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/modules/es6.array.find.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+// 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
+var $export = __webpack_require__("../node_modules/core-js/library/modules/_export.js");
+var $find = __webpack_require__("../node_modules/core-js/library/modules/_array-methods.js")(5);
+var KEY = 'find';
+var forced = true;
+// Shouldn't skip holes
+if (KEY in []) Array(1)[KEY](function () { forced = false; });
+$export($export.P + $export.F * forced, 'Array', {
+  find: function find(callbackfn /* , that = undefined */) {
+    return $find(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+__webpack_require__("../node_modules/core-js/library/modules/_add-to-unscopables.js")(KEY);
 
 
 /***/ }),
@@ -2830,6 +2960,26 @@ module.exports = __webpack_require__("../node_modules/core-js/library/modules/_c
 
 /***/ }),
 
+/***/ "../node_modules/core-js/library/modules/es6.string.includes.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// 21.1.3.7 String.prototype.includes(searchString, position = 0)
+
+var $export = __webpack_require__("../node_modules/core-js/library/modules/_export.js");
+var context = __webpack_require__("../node_modules/core-js/library/modules/_string-context.js");
+var INCLUDES = 'includes';
+
+$export($export.P + $export.F * __webpack_require__("../node_modules/core-js/library/modules/_fails-is-regexp.js")(INCLUDES), 'String', {
+  includes: function includes(searchString /* , position = 0 */) {
+    return !!~context(this, searchString, INCLUDES)
+      .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
+
+/***/ }),
+
 /***/ "../node_modules/core-js/library/modules/es6.string.iterator.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2850,6 +3000,19 @@ __webpack_require__("../node_modules/core-js/library/modules/_iter-define.js")(S
   point = $at(O, index);
   this._i += point.length;
   return { value: point, done: false };
+});
+
+
+/***/ }),
+
+/***/ "../node_modules/core-js/library/modules/es6.string.repeat.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__("../node_modules/core-js/library/modules/_export.js");
+
+$export($export.P, 'String', {
+  // 21.1.3.13 String.prototype.repeat(count)
+  repeat: __webpack_require__("../node_modules/core-js/library/modules/_string-repeat.js")
 });
 
 
@@ -35289,9 +35452,54 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 0:
+/***/ "./polyfills.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes__ = __webpack_require__("../node_modules/core-js/library/fn/string/virtual/includes.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat__ = __webpack_require__("../node_modules/core-js/library/fn/string/virtual/repeat.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find__ = __webpack_require__("../node_modules/core-js/library/fn/array/virtual/find.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign__ = __webpack_require__("../node_modules/core-js/library/fn/object/assign.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign__);
+/* eslint no-extend-native: 0 */
+// core-js comes with Next.js. So, you can import it like below
+
+
+
+ // Add your polyfills
+
+String.prototype.includes = __WEBPACK_IMPORTED_MODULE_0_core_js_library_fn_string_virtual_includes___default.a;
+String.prototype.repeat = __WEBPACK_IMPORTED_MODULE_1_core_js_library_fn_string_virtual_repeat___default.a;
+Array.prototype.find = __WEBPACK_IMPORTED_MODULE_2_core_js_library_fn_array_virtual_find___default.a;
+Object.prototype.assing = __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___default.a;
+
+/***/ }),
+
+/***/ 25:
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
+__webpack_require__("./polyfills.js");
 __webpack_require__("../node_modules/next/dist/client/webpack-hot-middleware-client.js");
 __webpack_require__("../node_modules/next/dist/client/on-demand-entries-client.js");
 module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.js");
@@ -35299,5 +35507,5 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 
 /***/ })
 
-},[0]);
+},[25]);
 //# sourceMappingURL=main.js.map

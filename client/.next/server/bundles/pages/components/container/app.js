@@ -460,31 +460,31 @@ var app_App = function App(_ref) {
   return external__react__default.a.createElement(MuiThemeProvider__default.a, {
     muiTheme: muiTheme
   }, external__react__default.a.createElement("div", {
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]]) + " " + "app"
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]]) + " " + "app"
   }, external__react__default.a.createElement(head__default.a, null, external__react__default.a.createElement("title", {
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
   }, localize_default()('website_title', translations)), external__react__default.a.createElement("meta", {
     name: "viewport",
     content: "initial-scale=1.0, width=device-width",
     key: "viewport",
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
   }), external__react__default.a.createElement("script", {
     src: "https://www.google.com/recaptcha/api.js",
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
   })), external__react__default.a.createElement("header", {
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
   }, header), external__react__default.a.createElement("main", {
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]])
   }, external__react__default.a.createElement(nav["default"], {
     stickToBottom: stickMenuToBottom,
     lang: lang,
     translations: translations,
     maxWidth: !backgroundImage ? screenSizes["a" /* default */].LG_MIN : undefined
   }), external__react__default.a.createElement("div", {
-    className: style__default.a.dynamic([["2709159866", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]]) + " " + "page-content"
+    className: style__default.a.dynamic([["3928952071", [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]]]) + " " + "page-content"
   }, children)), external__react__default.a.createElement(style__default.a, {
-    styleId: "2709159866",
-    css: ["main.__jsx-style-dynamic-selector{".concat(stickMenuToBottom && "height: 100vh;", " ").concat(backgroundImage && "background-image: url(".concat(backgroundImage, ");"), " background-repeat:no-repeat;background-size:cover;background-position:center center;}"), ".page-content.__jsx-style-dynamic-selector{height:100%;margin:0 auto;".concat(!backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";"), ";}")],
+    styleId: "3928952071",
+    css: ["main.__jsx-style-dynamic-selector{display:block;".concat(stickMenuToBottom && "height: 100vh;", " ").concat(backgroundImage && "background-image: url(".concat(backgroundImage, ");"), " background-repeat:no-repeat;background-size:cover;background-position:center center;}"), ".page-content.__jsx-style-dynamic-selector{height:100%;margin:0 auto;".concat(!backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";"), ";}")],
     dynamic: [stickMenuToBottom && "height: 100vh;", backgroundImage && "background-image: url(".concat(backgroundImage, ");"), !backgroundImage && "max-width: ".concat(screenSizes["a" /* default */].LG_MIN, ";")]
   }), external__react__default.a.createElement(global)));
 };
