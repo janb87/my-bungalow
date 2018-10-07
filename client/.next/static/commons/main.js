@@ -35479,9 +35479,10 @@ Object.assign = __WEBPACK_IMPORTED_MODULE_3_core_js_library_fn_object_assign___d
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
 __webpack_require__("./polyfills.js");
@@ -35492,5 +35493,5 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 
 /***/ })
 
-},[5]);
+},[6]);
 //# sourceMappingURL=main.js.map

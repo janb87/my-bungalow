@@ -17,4 +17,4 @@ module.exports = __webpack_require__("../node_modules/next/dist/client/next-dev.
 /***/ })
 
 })
-//# sourceMappingURL=0.540de6d1b4f2a1514b2c.hot-update.js.map
+//# sourceMappingURL=0.fc757d184ecc383f7acf.hot-update.js.map
