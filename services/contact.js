@@ -25,6 +25,9 @@ module.exports = {
 					},
 				});
 				return newContact.validate((err) => {
+					if (!err) {
+						return reject(emailError);
+					}
 					reject({
 						...err,
 						...emailError,
