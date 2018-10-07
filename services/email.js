@@ -1,5 +1,18 @@
 const nodemailer = require('nodemailer');
 const email = process.env.EMAIL_USER;
+const isDev = process.env.NODE_ENV !== 'production';
+
+const transporter = nodemailer.createTransport({
+	host: process.env.EMAIL_HOST,
+	port: Number(process.env.EMAIL_PORT),
+	authMethod: process.env.EMAIL_AUTH_METHOD || 'LOGIN',
+	auth: {
+		user: email,
+		pass: process.env.EMAIL_PASSWORD,
+	},
+	logger: isDev,
+	debug: isDev,
+});
 
 module.exports = {
 	sendEmail: ({
@@ -7,13 +20,6 @@ module.exports = {
 		html,
 		recipients = [process.env.EMAIL_DEFAULT_TO],
 	}) => {
-		const transporter = nodemailer.createTransport({
-			service: process.env.EMAIL_PROVIDER,
-			auth: {
-				user: email,
-				pass: process.env.EMAIL_PASSWORD,
-			},
-		});
 
 		const mailOptions = {
 			from: email,

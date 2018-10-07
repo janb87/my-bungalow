@@ -10,22 +10,32 @@ module.exports = {
 		message,
 	}) => {
 		return new Promise((resolve, reject) => {
+			const newContact = new Contact.model({
+				name,
+				email,
+				message,
+			});
+
 			if (!isValidEmail(email)) {
-				const error = createValidationError({
+				const emailError = createValidationError({
 					email: {
 						kind: 'invalid-email',
 						path: 'email',
 						message: 'Path `email` is invalid.',
 					},
 				});
-				return reject(error);
+				return newContact.validate((err) => {
+					reject({
+						...err,
+						...emailError,
+						errors: {
+							...err.errors,
+							...emailError.errors,
+						},
+					});
+				});
 			}
 
-			const newContact = new Contact.model({
-				name,
-				email,
-				message,
-			});
 			newContact.save(err => {
 				if (err) {
 					return reject(err);
