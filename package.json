@@ -31,8 +31,7 @@
     "dev": "nodemon --watch constants --watch models --watch routes --watch updates --watch services --watch keystone.js keystone.js",
     "build": "cd client && next build",
     "lint": "eslint .",
-    "start": "NODE_ENV=production node keystone.js",
-    "heroku-postbuild": "echo Skip build on Heroku"
+    "start": "NODE_ENV=production node keystone.js"
   },
   "heroku-run-build-script": true
 }
