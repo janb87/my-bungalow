@@ -1,8 +1,8 @@
 RewriteEngine on
 
-RewriteCond %{SERVER_PORT} 80 
+RewriteCond %{REQUEST_URI} !^/.well-known/
+RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R,L,QSA]
 
 RewriteCond %{REQUEST_URI} !^/.well-known/
 RewriteRule ^(.*) https://my-bungalow.herokuapp.com/$1 [P,L,QSA] 
-
