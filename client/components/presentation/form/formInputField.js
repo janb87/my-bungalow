@@ -1,8 +1,8 @@
 import React from 'react';
-import localize from '../../../../utils/localize';
-import { spacingMd } from '../../../../styles/spacing';
+import localize from '../../../utils/localize';
+import { spacingMd } from '../../../styles/spacing';
 import TextField from 'material-ui/TextField';
-import localizeError from '../../../../utils/localizeError';
+import localizeError from '../../../utils/localizeError';
 
 const FormInputField = ({
 	name,

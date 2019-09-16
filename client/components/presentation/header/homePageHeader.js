@@ -1,9 +1,9 @@
 import React from 'react';
-import localize from '../../../../utils/localize';
-import { Link } from '../../../../routes';
-import navLinkStyles from '../../../../styles/nav-link';
-import screenSizes from '../../../../styles/screenSizes';
-import { spacingXlg, spacingMd } from '../../../../styles/spacing';
+import localize from '../../../utils/localize';
+import { Link } from '../../../routes';
+import navLinkStyles from '../../../styles/nav-link';
+import screenSizes from '../../../styles/screenSizes';
+import { spacingXlg, spacingMd } from '../../../styles/spacing';
 
 const HomePageHeader = ({ lang, translations }) => {
 	return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { spacingXlg, spacingLg } from '../../../../styles/spacing';
-import colors from '../../../../styles/colors';
+import { spacingXlg, spacingLg } from '../../../styles/spacing';
+import colors from '../../../styles/colors';
 
 const Alert = ({ show, children, onDismiss, type = 'success' }) => {
 	const classes = classnames('alert', {
