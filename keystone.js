@@ -11,7 +11,7 @@ const connectMongo = require('connect-mongo');
 // and documentation.
 
 const MONGODB_URI
-	= process.env.MONGODB_URI || 'mongodb://localhost/my-bungalow';
+	= process.env.MONGODB_URI || 'mongodb://localhost/heroku_9ng67b15';
 
 keystone.init({
 	'name': 'Je suis Durbuy 84 Admin',
