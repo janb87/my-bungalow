@@ -57,9 +57,10 @@ class Gallery extends PureComponent {
 					);
 				}}
 			</Measure>,
+			// TODO: fix react-images update (use Modal)
 			<Lightbox
 				key="lightbox"
-				images={photos}
+				views={photos}
 				onClose={this.closeLightbox}
 				onClickPrev={this.gotoPrevious}
 				onClickNext={this.gotoNext}
