@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import localize from '../../../../utils/localize';
 import ReactPhotoGallery from 'react-photo-gallery';
-import Lightbox from 'react-images';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import Measure from 'react-measure';
 import screenSizes from '../../../../styles/screenSizes';
 
@@ -12,8 +12,6 @@ class Gallery extends PureComponent {
 		this.state = { currentImage: 0, width: -1 };
 		this.closeLightbox = this.closeLightbox.bind(this);
 		this.openLightbox = this.openLightbox.bind(this);
-		this.gotoNext = this.gotoNext.bind(this);
-		this.gotoPrevious = this.gotoPrevious.bind(this);
 	}
 
 	render () {
@@ -57,16 +55,16 @@ class Gallery extends PureComponent {
 					);
 				}}
 			</Measure>,
-			// TODO: fix react-images update (use Modal)
-			<Lightbox
-				key="lightbox"
-				views={photos}
-				onClose={this.closeLightbox}
-				onClickPrev={this.gotoPrevious}
-				onClickNext={this.gotoNext}
-				currentImage={this.state.currentImage}
-				isOpen={this.state.lightboxIsOpen}
-			/>,
+			<ModalGateway key="lightbox">
+				{this.state.lightboxIsOpen ? (
+					<Modal onClose={this.closeLightbox}>
+						<Carousel
+							views={photos}
+							currentIndex={this.state.currentImage}
+						/>
+					</Modal>
+				) : null}
+			</ModalGateway>,
 		];
 	}
 
@@ -81,18 +79,6 @@ class Gallery extends PureComponent {
 		this.setState({
 			currentImage: 0,
 			lightboxIsOpen: false,
-		});
-	}
-
-	gotoPrevious () {
-		this.setState({
-			currentImage: this.state.currentImage - 1,
-		});
-	}
-
-	gotoNext () {
-		this.setState({
-			currentImage: this.state.currentImage + 1,
 		});
 	}
 }
