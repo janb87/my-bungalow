@@ -29,6 +29,7 @@ keystone.init({
 			url: MONGODB_URI,
 			autoRemove: 'interval',
 			autoRemoveInterval: 10, // In minutes. Default
+			mongoOptions: { useUnifiedTopology: true },
 		});
 	},
 	'auth': true,
@@ -40,11 +41,6 @@ keystone.init({
 	'wysiwyg menubar': false,
 	'wysiwyg cloudinary images': true,
 	'wysiwyg additional buttons': 'forecolor backcolor, table, searchreplace',
-	// TODO: remove again
-	// https://github.com/keystonejs/keystone/issues/3529
-	'wysiwyg additional options': {
-		external_plugins: { uploadimage: '/js/uploadimage/plugin.min.js' },
-	},
 	'wysiwyg additional plugins':
 		'table, fullpage, hr, media, searchreplace, textcolor',
 });
