@@ -1,7 +1,7 @@
 import React from 'react';
 import colors from '../styles/colors';
-import App from './components/container/app';
-import HomePageHeader from './components/presentation/header/homePageHeader';
+import App from '../components/container/app';
+import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
 import screenSizes from '../styles/screenSizes';
 import { spacingXlg, spacingLg } from '../styles/spacing';

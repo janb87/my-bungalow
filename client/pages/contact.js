@@ -1,14 +1,14 @@
 import React from 'react';
-import App from './components/container/app';
+import App from '../components/container/app';
 import { getJson, postJson } from '../utils/ajax';
 import localize from '../utils/localize';
 import { spacingLg, spacingXlg } from '../styles/spacing';
-import FormInputField from './components/presentation/form/formInputField';
-import Button from './components/presentation/common/button';
-import LoaderCurtain from './components/presentation/common/loaderCurtain';
+import FormInputField from '../components/presentation/form/formInputField';
+import Button from '../components/presentation/common/button';
+import LoaderCurtain from '../components/presentation/common/loaderCurtain';
 import screenSizes from '../styles/screenSizes';
 import tryParseJson from '../utils/tryParseJson';
-import Alert from './components/presentation/common/alert';
+import Alert from '../components/presentation/common/alert';
 
 const INITIAL_STATE = {
 	errors: undefined,

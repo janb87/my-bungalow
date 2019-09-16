@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import localize from '../../../../utils/localize';
+import localize from '../../../utils/localize';
 import ReactPhotoGallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import Measure from 'react-measure';
-import screenSizes from '../../../../styles/screenSizes';
+import screenSizes from '../../../styles/screenSizes';
 
 class Gallery extends PureComponent {
 	constructor (props) {

@@ -1,10 +1,10 @@
 import React from 'react';
-import App from './components/container/app';
+import App from '../components/container/app';
 import { getJson } from '../utils/ajax';
 import localize from '../utils/localize';
 import { spacingLg, spacingXlg } from '../styles/spacing';
 import screenSizes from '../styles/screenSizes';
-import Gallery from './components/presentation/gallery/gallery';
+import Gallery from '../components/presentation/gallery/gallery';
 
 const Bungalow = ({ config, userAgent, bungalowPage }) => {
 	const photos = bungalowPage.images.map(({ url, width, height }) => ({

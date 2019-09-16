@@ -1,10 +1,10 @@
 import React from 'react';
-import localize from '../../../../utils/localize';
-import colors from '../../../../styles/colors';
-import { Link } from '../../../../routes';
-import navLinkStyles from '../../../../styles/nav-link';
-import { spacingLg } from '../../../../styles/spacing';
-import screenSizes from '../../../../styles/screenSizes';
+import localize from '../../../utils/localize';
+import colors from '../../../styles/colors';
+import { Link } from '../../../routes';
+import navLinkStyles from '../../../styles/nav-link';
+import { spacingLg } from '../../../styles/spacing';
+import screenSizes from '../../../styles/screenSizes';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 	// TODO: localize urls

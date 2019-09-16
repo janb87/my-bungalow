@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from './loader';
-import colors from '../../../../styles/colors';
+import colors from '../../../styles/colors';
 
 export default function LoaderCurtain ({ children, show }) {
 	// TODO: show after delay

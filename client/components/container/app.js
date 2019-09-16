@@ -1,12 +1,12 @@
 import React from 'react';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import globalStyles from '../../../styles/global';
-import screenSizes from '../../../styles/screenSizes';
+import globalStyles from '../../styles/global';
+import screenSizes from '../../styles/screenSizes';
 import Nav from '../presentation/common/nav';
 import Head from 'next/head';
-import localize from '../../../utils/localize';
-import colors from '../../../styles/colors';
+import localize from '../../utils/localize';
+import colors from '../../styles/colors';
 import DefaultHeader from '../presentation/header/defaultHeader';
 
 const App = ({

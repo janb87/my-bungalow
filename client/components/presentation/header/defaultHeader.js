@@ -1,8 +1,8 @@
 import React from 'react';
-import localize from '../../../../utils/localize';
-import { Link } from '../../../../routes';
-import screenSizes from '../../../../styles/screenSizes';
-import { spacingMd, spacingLg, spacingXlg } from '../../../../styles/spacing';
+import localize from '../../../utils/localize';
+import { Link } from '../../../routes';
+import screenSizes from '../../../styles/screenSizes';
+import { spacingMd, spacingLg, spacingXlg } from '../../../styles/spacing';
 
 const DefaultHeader = ({ lang, translations }) => {
 	return (

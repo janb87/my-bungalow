@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './components/container/app';
+import App from '../components/container/app';
 import { getJson } from '../utils/ajax';
 import { spacingLg, spacingXlg } from '../styles/spacing';
 import screenSizes from '../styles/screenSizes';
