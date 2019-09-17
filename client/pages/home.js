@@ -1,24 +1,14 @@
 import React from 'react';
 import colors from '../styles/colors';
-import App from '../components/container/app';
 import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
 import screenSizes from '../styles/screenSizes';
 import { spacingXlg, spacingLg } from '../styles/spacing';
 
-const HomePage = ({ message, backgroundImage, config, userAgent }) => [
-	<App
-		key="app"
-		config={config}
-		backgroundImage={backgroundImage}
-		stickMenuToBottom={true}
-		header={<HomePageHeader {...config} />}
-		userAgent={userAgent}
-	>
-		<div className="message">
-			<p>{message}</p>
-		</div>
-	</App>,
+const HomePage = ({ message }) => [
+	<div key="home-page" className="message">
+		<p>{message}</p>
+	</div>,
 	<style key="styles" jsx="">{`
 		.message {
 			display: flex;
@@ -43,24 +33,17 @@ const HomePage = ({ message, backgroundImage, config, userAgent }) => [
 	`}</style>,
 ];
 
-HomePage.getInitialProps = async ({ req, query: { lang } }) => {
-	const { translations, settings } = await getJson(
-		req,
-		`/api/${lang ? encodeURIComponent(lang) + '/' : ''}config`
-	);
+HomePage.getInitialProps = async ({ req, query: { lang }, config }) => {
 	const { message, backgroundImage } = await getJson(
 		req,
-		`/api/${encodeURIComponent(lang || settings.defaultLanguage)}/home-page`
+		`/api/${encodeURIComponent(lang || config.settings.defaultLanguage)}/home-page`
 	);
 	return {
 		message,
 		backgroundImage: backgroundImage || '/img/home-banner.jpg',
-		config: {
-			translations,
-			settings,
-			lang: lang || settings.defaultLanguage,
-		},
-		userAgent: req && req.headers['user-agent'],
+		stickMenuToBottom: true,
+		header: <HomePageHeader {...config} />,
+		config,
 	};
 };
 

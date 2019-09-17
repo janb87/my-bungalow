@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import localize from '../../../utils/localize';
 import colors from '../../../styles/colors';
 import { Link } from '../../../routes';
@@ -6,31 +7,47 @@ import navLinkStyles from '../../../styles/nav-link';
 import { spacingLg } from '../../../styles/spacing';
 import screenSizes from '../../../styles/screenSizes';
 
-const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
+const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
 	// TODO: localize urls
+	const routes = [
+		{
+			name: '/bungalow',
+			route: `/${lang}/de-bungalow`,
+			text: localize('menu_bungalow', translations),
+		},
+		{
+			name: '/park',
+			route: `/${lang}/het-park`,
+			text: localize('menu_park', translations),
+		},
+		{
+			name: '/nearby',
+			route: `/${lang}/in-de-omgeving`,
+			text: localize('menu_nearby', translations),
+		},
+		{
+			name: '/book',
+			route: `/${lang}/reserveer`,
+			text: localize('menu_book', translations),
+		},
+	];
 	return (
 		<nav className="main-nav">
 			<ul>
-				<li>
-					<Link route={`/${lang}/de-bungalow`}>
-						<a>{localize('menu_bungalow', translations)}</a>
-					</Link>
-				</li>
-				<li>
-					<Link route={`/${lang}/het-park`}>
-						<a>{localize('menu_park', translations)}</a>
-					</Link>
-				</li>
-				<li>
-					<Link route={`/${lang}/in-de-omgeving`}>
-						<a>{localize('menu_nearby', translations)}</a>
-					</Link>
-				</li>
-				<li>
-					<Link route={`/${lang}/reserveer`}>
-						<a>{localize('menu_book', translations)}</a>
-					</Link>
-				</li>
+				{
+					routes.map(({ name, route, text }) => {
+						const classes = classnames({
+							active: activeRoute === name,
+						});
+						return (
+							<li className={classes} key={route}>
+								<Link route={route}>
+									<a>{text}</a>
+								</Link>
+							</li>
+						);
+					})
+				}
 			</ul>
 			<style jsx="">{`
 				.main-nav {
@@ -69,6 +86,10 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth }) => {
 
 				.main-nav > ul > li:last-child {
 					margin-bottom: ${spacingLg()};
+				}
+
+				.main-nav > ul > li.active > a {
+					color: ${colors.secondary};
 				}
 
 				@media (min-width: ${screenSizes.SM_MIN}) {
