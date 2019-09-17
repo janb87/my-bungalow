@@ -1,6 +1,5 @@
 import React from 'react';
 import colors from '../styles/colors';
-import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
 import screenSizes from '../styles/screenSizes';
 import { spacingXlg, spacingLg } from '../styles/spacing';
@@ -42,7 +41,6 @@ HomePage.getInitialProps = async ({ req, query: { lang }, config }) => {
 		message,
 		backgroundImage: backgroundImage || '/img/home-banner.jpg',
 		stickMenuToBottom: true,
-		header: <HomePageHeader {...config} />,
 		config,
 	};
 };
