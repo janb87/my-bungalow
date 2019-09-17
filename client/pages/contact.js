@@ -1,6 +1,5 @@
 import React from 'react';
-import App from '../components/container/app';
-import { getJson, postJson } from '../utils/ajax';
+import { postJson } from '../utils/ajax';
 import localize from '../utils/localize';
 import { spacingLg, spacingXlg } from '../styles/spacing';
 import FormInputField from '../components/presentation/form/formInputField';
@@ -29,21 +28,19 @@ const Contact = class extends React.Component {
 	}
 
 	render () {
-		const { config, userAgent } = this.props;
+		const { config } = this.props;
 		const { isSubmitting, isSubmitted, errors } = this.state;
 
 		return [
-			<App key="app" config={config} userAgent={userAgent}>
+			<div key="contact-page" className="contact">
 				<LoaderCurtain show={isSubmitting} />
-				<div className="contact">
-					<h1>{localize('contact_title', config.translations)}</h1>
-					<p>{localize('contact_description', config.translations)}</p>
-					<Alert show={isSubmitted && !errors}>
-						{localize('contact_success', config.translations)}
-					</Alert>
-					{!isSubmitted || errors ? this._renderForm() : null}
-				</div>
-			</App>,
+				<h1>{localize('contact_title', config.translations)}</h1>
+				<p>{localize('contact_description', config.translations)}</p>
+				<Alert show={isSubmitted && !errors}>
+					{localize('contact_success', config.translations)}
+				</Alert>
+				{!isSubmitted || errors ? this._renderForm() : null}
+			</div>,
 			<style key="styles" jsx="">{`
 				.contact {
 					margin: ${spacingLg()};
@@ -132,14 +129,9 @@ const Contact = class extends React.Component {
 	}
 };
 
-Contact.getInitialProps = async ({ req, query: { lang } }) => {
-	const { translations, settings } = await getJson(
-		req,
-		`/api/${encodeURIComponent(lang)}/config`
-	);
+Contact.getInitialProps = async ({ config }) => {
 	return {
-		config: { lang, translations, settings },
-		userAgent: req && req.headers['user-agent'],
+		config,
 	};
 };
 
