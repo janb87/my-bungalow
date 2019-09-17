@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import globalStyles from '../styles/global';
@@ -16,8 +16,8 @@ import { getJson } from '../utils/ajax';
 import { trackPageView } from '../utils/analytics';
 
 const CookieConsent = dynamic(
-  () => import('../components/presentation/cookie-consent'),
-  { ssr: false }
+	() => import('../components/presentation/cookie-consent'),
+	{ ssr: false }
 );
 
 class MyApp extends App {
@@ -52,7 +52,7 @@ class MyApp extends App {
 		};
 	}
 
-	componentDidMount() {
+	componentDidMount () {
 		Router.onRouteChangeComplete = url => {
 			trackPageView(url);
 		};
