@@ -23,7 +23,7 @@ const Bungalow = ({ config, userAgent, bungalowPage }) => {
 				{bungalowPage.groundPlanImage && (
 					<section>
 						<Gallery
-							photos={[{ src: bungalowPage.groundPlanImage }]}
+							photos={[bungalowPage.groundPlanImage]}
 							translations={config.translations}
 						/>
 					</section>

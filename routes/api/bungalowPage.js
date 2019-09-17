@@ -26,7 +26,11 @@ exports = module.exports = async function (req, res, next) {
 		res.json({
 			characteristics,
 			rules,
-			groundPlanImage: groundPlanImage.secure_url,
+			groundPlanImage: {
+				src: groundPlanImage.secure_url,
+				width: groundPlanImage.width,
+				height: groundPlanImage.height,
+			},
 			images: gallery.images.map(image => ({
 				url: image.secure_url,
 				width: image.width,

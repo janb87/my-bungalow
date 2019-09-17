@@ -44,6 +44,7 @@ class Gallery extends PureComponent {
 					return (
 						<div
 							ref={measureRef}
+							className="gallery"
 							style={{ visibility: width < 1 ? 'hidden' : 'visible' }}
 						>
 							<ReactPhotoGallery
@@ -65,6 +66,12 @@ class Gallery extends PureComponent {
 					</Modal>
 				) : null}
 			</ModalGateway>,
+			<style key="styles" jsx="">{`
+				.gallery img:only-child {
+					max-width: 300px;
+					height: auto !important;
+				}
+			`}</style>,
 		];
 	}
 
