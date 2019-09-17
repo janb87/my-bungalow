@@ -1,6 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import Router from 'next/router';
 import dynamic from 'next/dynamic'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,6 +13,7 @@ import colors from '../styles/colors';
 import DefaultHeader from '../components/presentation/header/defaultHeader';
 import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
+import { trackPageView } from '../utils/analytics';
 
 const CookieConsent = dynamic(
   () => import('../components/presentation/cookie-consent'),
@@ -47,6 +49,12 @@ class MyApp extends App {
 			backgroundImage: pageProps.backgroundImage,
 			stickMenuToBottom: pageProps.stickMenuToBottom,
 			pageProps,
+		};
+	}
+
+	componentDidMount() {
+		Router.onRouteChangeComplete = url => {
+			trackPageView(url);
 		};
 	}
 

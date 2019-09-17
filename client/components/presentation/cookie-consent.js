@@ -11,7 +11,7 @@ function CookieConsent ({ lang, translations }) {
 function initCookieConsent (translations) {
 	if (window.cookieconsent.hasInitialised) {
 		const consentEl = document.querySelector('.cc-window');
-		consentEl.parentElement.removeChild(consentEl);
+		consentEl && consentEl.parentElement.removeChild(consentEl);
 	}
 	window.cookieconsent.initialise({
 		palette: {
@@ -34,6 +34,7 @@ function initCookieConsent (translations) {
 			target: '_blank',
 		},
 	});
+	return;
 }
 
 export default CookieConsent;
