@@ -4,7 +4,7 @@ import localize from '../../../utils/localize';
 import colors from '../../../styles/colors';
 import { Link } from '../../../routes';
 import navLinkStyles from '../../../styles/nav-link';
-import { spacingLg } from '../../../styles/spacing';
+import { spacingMd } from '../../../styles/spacing';
 import screenSizes from '../../../styles/screenSizes';
 
 const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
@@ -77,15 +77,11 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
 				.main-nav > ul > li {
 					flex: 1;
 					display: flex;
-					margin: ${spacingLg()} 0 0;
+					padding: ${spacingMd()} 0;
 
 					font-size: 1em;
 					align-items: center;
 					justify-content: center;
-				}
-
-				.main-nav > ul > li:last-child {
-					margin-bottom: ${spacingLg()};
 				}
 
 				.main-nav > ul > li.active {
@@ -110,6 +106,7 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
 
 					.main-nav > ul > li {
 						margin: 0;
+						padding: 0;
 						font-size: 1.4em;
 
 						border-right: 1px solid ${colors.white};
@@ -117,7 +114,6 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
 
 					.main-nav > ul > li:last-child {
 						border-right: none;
-						margin-bottom: 0;
 					}
 				}
 			`}</style>
