@@ -1,6 +1,8 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import Router from 'next/router';
+import dynamic from 'next/dynamic';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import globalStyles from '../styles/global';
@@ -11,6 +13,12 @@ import colors from '../styles/colors';
 import DefaultHeader from '../components/presentation/header/defaultHeader';
 import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
+import { trackPageView } from '../utils/analytics';
+
+const CookieConsent = dynamic(
+	() => import('../components/presentation/cookie-consent'),
+	{ ssr: false }
+);
 
 class MyApp extends App {
 	// Only uncomment this method if you have blocking data requirements for
@@ -41,6 +49,12 @@ class MyApp extends App {
 			backgroundImage: pageProps.backgroundImage,
 			stickMenuToBottom: pageProps.stickMenuToBottom,
 			pageProps,
+		};
+	}
+
+	componentDidMount () {
+		Router.onRouteChangeComplete = url => {
+			trackPageView(url);
 		};
 	}
 
@@ -99,9 +113,11 @@ class MyApp extends App {
 						<meta key="description" name="description" content={localize('website_description', translations)} />
 						{/* TODO: add more met tags for SEO */}
 						<script src="https://www.google.com/recaptcha/api.js" />
+						<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 					</Head>
 					<header>{header}</header>
 					<main>
+						<CookieConsent lang={lang} translations={translations} />
 						<Nav
 							stickToBottom={stickMenuToBottom}
 							lang={lang}
