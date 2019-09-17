@@ -9,6 +9,7 @@ import Nav from '../components/presentation/common/nav';
 import localize from '../utils/localize';
 import colors from '../styles/colors';
 import DefaultHeader from '../components/presentation/header/defaultHeader';
+import HomePageHeader from '../components/presentation/header/homePageHeader';
 import { getJson } from '../utils/ajax';
 
 class MyApp extends App {
@@ -39,7 +40,6 @@ class MyApp extends App {
 			...appProps,
 			backgroundImage: pageProps.backgroundImage,
 			stickMenuToBottom: pageProps.stickMenuToBottom,
-			header: pageProps.header,
 			pageProps,
 		};
 	}
@@ -54,10 +54,12 @@ class MyApp extends App {
 			userAgent,
 			activeRoute,
 		} = this.props;
+		let header = null;
 		const { lang, translations } = config;
-		let { header } = this.props;
-		if (!header) {
+		if (!stickMenuToBottom) {
 			header = <DefaultHeader lang={lang} translations={translations} activeRoute={activeRoute} />;
+		} else {
+			header = <HomePageHeader {...config} />;
 		}
 		const muiTheme = getMuiTheme(
 			{
