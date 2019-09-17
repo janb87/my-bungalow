@@ -42,7 +42,14 @@ keystone.init({
 	'wysiwyg cloudinary images': true,
 	'wysiwyg additional buttons': 'forecolor backcolor, table, searchreplace',
 	'wysiwyg additional plugins':
-		'table, fullpage, hr, media, searchreplace, textcolor',
+		'table, fullpage, hr, media, searchreplace, textcolor, paste',
+	'wysiwyg additional options': {
+		forced_root_block: '',
+		force_br_newlines: true,
+		force_p_newlines: true,
+		relative_urls: false,
+		convert_urls: false,
+	},
 });
 
 // Load your project's Models
