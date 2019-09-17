@@ -57,7 +57,7 @@ class MyApp extends App {
 		const { lang, translations } = config;
 		let { header } = this.props;
 		if (!header) {
-			header = <DefaultHeader lang={lang} translations={translations} />;
+			header = <DefaultHeader lang={lang} translations={translations} activeRoute={activeRoute} />;
 		}
 		const muiTheme = getMuiTheme(
 			{

@@ -1,14 +1,19 @@
 import React from 'react';
+import classnames from 'classnames';
 import localize from '../../../utils/localize';
 import { Link } from '../../../routes';
 import screenSizes from '../../../styles/screenSizes';
+import colors from '../../../styles/colors';
 import { spacingMd, spacingLg, spacingXlg } from '../../../styles/spacing';
 
-const DefaultHeader = ({ lang, translations }) => {
+const DefaultHeader = ({ lang, translations, activeRoute }) => {
+	const contactClasses = classnames({
+		active: activeRoute === '/contact',
+	});
 	return (
 		<nav className="default-header-nav">
 			<Link route="contact" params={{ lang }}>
-				<a>{localize('contact_title', translations)}</a>
+				<a className={contactClasses}>{localize('contact_title', translations)}</a>
 			</Link>
 			<Link route="home" params={{ lang }}>
 				<a>{localize('home_title', translations)}</a>
@@ -23,6 +28,10 @@ const DefaultHeader = ({ lang, translations }) => {
 					nav.default-header-nav > a {
 						font-size: 1em;
 						margin: 0 ${spacingLg()};
+					}
+					nav.default-header-nav > a.active {
+						color: ${colors.green_dark};
+						pointer-events: none;
 					}
 
 					nav.default-header-nav > a:not(:last-child) {

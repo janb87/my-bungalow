@@ -88,8 +88,9 @@ const Nav = ({ lang, translations, stickToBottom, maxWidth, activeRoute }) => {
 					margin-bottom: ${spacingLg()};
 				}
 
-				.main-nav > ul > li.active > a {
-					color: ${colors.secondary};
+				.main-nav > ul > li.active {
+					background-color: ${colors.green_dark};
+					pointer-events: none;
 				}
 
 				@media (min-width: ${screenSizes.SM_MIN}) {

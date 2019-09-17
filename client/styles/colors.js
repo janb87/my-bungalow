@@ -9,6 +9,7 @@ const colors = {
 	orange: '#fd7e14',
 	yellow: '#ffc107',
 	green: '#28a745',
+	green_dark: '#007412',
 	teal: '#20c997',
 	cyan: '#17a2b8',
 	gray: '#6c757d',
