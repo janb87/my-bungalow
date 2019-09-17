@@ -109,7 +109,7 @@ class MyApp extends App {
 					</Head>
 					<header>{header}</header>
 					<main>
-						<CookieConsent />
+						<CookieConsent lang={lang} translations={translations} />
 						<Nav
 							stickToBottom={stickMenuToBottom}
 							lang={lang}
