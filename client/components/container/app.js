@@ -55,6 +55,7 @@ const App = ({
 						content="initial-scale=1.0, width=device-width"
 						key="viewport"
 					/>
+					<meta key="description" name="description" content={localize('website_description', translations)} />
 					{/* TODO: add more met tags for SEO */}
 					<script src="https://www.google.com/recaptcha/api.js" />
 				</Head>
