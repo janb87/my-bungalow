@@ -1,4 +1,6 @@
-module.exports = {
+const withCSS = require('@zeit/next-css');
+
+module.exports = withCSS({
 	poweredByHeader: false,
 	webpack: function (cfg) {
 		const originalEntry = cfg.entry;
@@ -14,4 +16,4 @@ module.exports = {
 
 		return cfg;
 	},
-};
+});

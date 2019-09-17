@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import 'CookieConsent';
+import 'cookieconsent';
+import 'cookieconsent/build/cookieconsent.min.css';
 import colors from '../../styles/colors';
 import localize from '../../utils/localize';
 

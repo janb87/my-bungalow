@@ -113,7 +113,6 @@ class MyApp extends App {
 						<meta key="description" name="description" content={localize('website_description', translations)} />
 						{/* TODO: add more met tags for SEO */}
 						<script src="https://www.google.com/recaptcha/api.js" />
-						<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
 					</Head>
 					<header>{header}</header>
 					<main>
