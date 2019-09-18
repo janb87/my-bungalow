@@ -46,9 +46,10 @@ const HomePage = ({ message, buttonText, lang }) => [
 ];
 
 HomePage.getInitialProps = async ({ req, query: { lang }, config }) => {
+	const language = lang || config.settings.defaultLanguage;
 	const { message, backgroundImage, buttonText } = await getJson(
 		req,
-		`/api/${encodeURIComponent(lang || config.settings.defaultLanguage)}/home-page`
+		`/api/${encodeURIComponent(language)}/home-page`
 	);
 	return {
 		message,
@@ -56,7 +57,7 @@ HomePage.getInitialProps = async ({ req, query: { lang }, config }) => {
 		buttonText,
 		stickMenuToBottom: true,
 		config,
-		lang,
+		lang: language,
 	};
 };
 
