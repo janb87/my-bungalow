@@ -10,10 +10,11 @@ exports = module.exports = async function (req, res, next) {
 		}
 		const langModel = languageId ? { id: languageId } : await getLang(lang);
 		const homePage = await getHomePage(langModel.id);
-		const { message, backgroundImage } = homePage;
+		const { message, backgroundImage, buttonText } = homePage;
 		res.json({
 			message,
 			backgroundImage: backgroundImage.secure_url || '/img/home-banner.jpg',
+			buttonText,
 		});
 	} catch (err) {
 		next(err);
