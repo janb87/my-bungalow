@@ -5,6 +5,7 @@ require('dotenv').config();
 // Require keystone
 const keystone = require('keystone');
 const connectMongo = require('connect-mongo');
+const mongoose = require('mongoose')
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
@@ -37,6 +38,7 @@ keystone.init({
 	'user model': 'User',
 
 	'mongo': MONGODB_URI,
+	'mongoose': mongoose,
 
 	'wysiwyg menubar': false,
 	'wysiwyg cloudinary images': true,
